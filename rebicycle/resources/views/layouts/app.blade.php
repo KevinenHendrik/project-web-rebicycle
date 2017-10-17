@@ -70,11 +70,12 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/packs/solid.js') }}"></script>
+    <script src="{{ asset('js/fontawesome.js') }}"></script>
 </body>
 </html>

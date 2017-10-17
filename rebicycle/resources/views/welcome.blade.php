@@ -5,6 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <script src="{{ asset('js/light.js') }}"></script>
+    <script src="{{ asset('js/fontawesome.js') }}"></script>
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -82,6 +84,8 @@
                     Laravel
                 </div>
 
+
+                <i class="fal fa-user"></i><h1>dsfasdfasdf</h1>
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
