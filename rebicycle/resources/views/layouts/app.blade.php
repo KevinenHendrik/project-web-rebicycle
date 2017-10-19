@@ -12,6 +12,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+    <!-- Scripts font awesome -->
+    <script defer src="{{ asset('js/fontawesome.js') }}"></script>
+    <script defer src="{{ asset('js/light.js') }}"></script>
+    <script defer src="{{ asset('js/solid.js') }}"></script>
 </head>
 <body>
     <div id="app">
@@ -29,6 +35,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
+                        <i class="fal fa-bicycle"></i>
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -42,9 +49,32 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+                        <li><a href="/"><i class="fal fa-shopping-cart"></i></a></li>
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                        <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <i class="fal fa-user"></i> <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="/">
+                                        <i class="fal fa-bolt"></i>
+                                        test
+                                        </a>
+                                        <a href="/">
+                                        <i class="fal fa-car"></i>
+                                        test
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -70,12 +100,13 @@
                 </div>
             </div>
         </nav>
+        <div class="container">
         @yield('content')
+        </div>
     </div>
 
-    <!-- Scripts -->
+    <!--Scripts-->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/packs/solid.js') }}"></script>
-    <script src="{{ asset('js/fontawesome.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
 </body>
 </html>

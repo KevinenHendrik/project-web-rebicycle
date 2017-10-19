@@ -1,10 +1,39 @@
+.bikeSale {
+  border: 2px black solid; }
+  .bikeSale img {
+    width: 100%; }
+  .bikeSale h3 {
+    margin: 0 !important;
+    padding: 0 !important; }
+  .bikeSale .bikeSaleRight {
+    text-align: right; }
+    .bikeSale .bikeSaleRight .fa-heart {
+      color: white; }
+    .bikeSale .bikeSaleRight .fa-heart:hover {
+      color: red; }
+  .bikeSale li {
+    list-style-type: none; }
+
 body {
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: Helvetica, sans-serif; }
 
-* {
-  background-color: red; }
-
-.bike {
-  font-size: 20em; }
+.intro {
+  margin: 0; }
+  .intro .hero-image {
+    background-image: url("https://i.imgur.com/6UeT88z.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+    margin-top: -75px;
+    padding-top: 0; }
+  .intro h1 {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    color: black; }
 
 /*# sourceMappingURL=main.css.map */
