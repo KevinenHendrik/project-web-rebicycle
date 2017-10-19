@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -43,7 +43,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                    <li><a href="/bike">bike</a></li>
+                    <li><a href="/bikes">bikes</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
