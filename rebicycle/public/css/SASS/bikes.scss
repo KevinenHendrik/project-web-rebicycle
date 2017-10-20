@@ -1,0 +1,31 @@
+.bikeSale{
+    border: 2px black solid;
+    img{
+        width: 100%;
+        // margin-top: 1em;
+    }
+
+    h3{
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .bikeSaleRight{
+        text-align: right;
+
+        .fa-heart{
+            color:white;
+            
+        }
+
+        .fa-heart:hover{
+            color:red;
+        }
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+
+}

@@ -1,11 +1,75 @@
+@import 'bikes','fonts';
+
+$font-main: Helvetica, sans-serif;
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $font-main;
 }
 
-* {
-    background-color: red;
+.navbar{
+    background-color: transparent;
+    font-size: 2em;
+    a{
+        color:white;
+        &:hover{
+            color: black;
+        }
+    }
 }
 
-.bike {
-    font-size: 20em;
+.intro {
+    margin:0;
+    .hero-image{
+        background-image: url("https://i.imgur.com/6UeT88z.jpg");
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        padding-top: 0;
+        h1{ 
+            font-family: $font-hero;
+            font-size: 7em;
+            text-align: center;
+            position: absolute;
+            top: 33%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            // position: fixed;
+        }
+        .fa-chevron-double-down{
+            color: white;
+            margin: 0;
+            position: absolute;
+            top: 94%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            &:hover{
+                color: black;
+            }
+        }
+        .buttons-hero-image{
+            padding-top: 50vh;
+            .btn{
+                background-color: transparent;
+                border: 1px solid white;
+                color: white;
+                width: 150px;
+
+                &:hover{
+                    background-color: rgba($color:#ffffff, $alpha: .3);
+
+                }
+            }
+            .left .btn{
+                float:right;
+            }
+            .right .btn{
+                float: left;
+            }
+        }
+
+    }
 }

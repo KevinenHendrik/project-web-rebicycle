@@ -1,10 +1,71 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+.bikeSale {
+  border: 2px black solid; }
+  .bikeSale img {
+    width: 100%; }
+  .bikeSale h3 {
+    margin: 0 !important;
+    padding: 0 !important; }
+  .bikeSale .bikeSaleRight {
+    text-align: right; }
+    .bikeSale .bikeSaleRight .fa-heart {
+      color: white; }
+    .bikeSale .bikeSaleRight .fa-heart:hover {
+      color: red; }
+  .bikeSale li {
+    list-style-type: none; }
+
 body {
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: Helvetica, sans-serif; }
 
-* {
-  background-color: red; }
+.navbar {
+  background-color: transparent;
+  font-size: 2em; }
+  .navbar a {
+    color: white; }
+    .navbar a:hover {
+      color: black; }
 
-.bike {
-  font-size: 20em; }
+.intro {
+  margin: 0; }
+  .intro .hero-image {
+    background-image: url("https://i.imgur.com/6UeT88z.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding-top: 0; }
+    .intro .hero-image h1 {
+      font-family: "Pacifico", cursive;
+      font-size: 7em;
+      text-align: center;
+      position: absolute;
+      top: 33%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white; }
+    .intro .hero-image .fa-chevron-double-down {
+      color: white;
+      margin: 0;
+      position: absolute;
+      top: 94%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+      .intro .hero-image .fa-chevron-double-down:hover {
+        color: black; }
+    .intro .hero-image .buttons-hero-image {
+      padding-top: 50vh; }
+      .intro .hero-image .buttons-hero-image .btn {
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        width: 150px; }
+        .intro .hero-image .buttons-hero-image .btn:hover {
+          background-color: rgba(255, 255, 255, 0.3); }
+      .intro .hero-image .buttons-hero-image .left .btn {
+        float: right; }
+      .intro .hero-image .buttons-hero-image .right .btn {
+        float: left; }
 
 /*# sourceMappingURL=main.css.map */
