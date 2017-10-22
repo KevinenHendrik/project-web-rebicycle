@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Pacifico");
 .bikeSale {
-  border: 2px black solid; }
+  background-color: yellow;
+  height: 300px;
+  margin-bottom: 40px; }
   .bikeSale img {
-    width: 100%; }
+    width: 90%;
+    margin-left: 5%; }
   .bikeSale h3 {
     margin: 0 !important;
     padding: 0 !important; }
@@ -15,16 +18,36 @@
   .bikeSale li {
     list-style-type: none; }
 
+@keyframes bounce {
+  0%, 50%, 100% {
+    transform: translate(-50%, -50%); }
+  10%,60% {
+    transform: translate(-50%, -80%); }
+  35%,75% {
+    transform: translate(-50%, -30%); } }
 body {
   font-family: Helvetica, sans-serif; }
 
 .navbar {
-  background-color: transparent;
-  font-size: 2em; }
-  .navbar a {
-    color: white; }
-    .navbar a:hover {
-      color: black; }
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0; }
+  .navbar .navbar-inverse .navbar-collapse, .navbar .navbar-inverse .navbar-inverse .navbar-form {
+    border: 0;
+    font-size: 4em; }
+  .navbar .dropdown .open {
+    border: 0; }
+  .navbar .transparent .navbar-inverse .navbar-inner {
+    border-width: 0px;
+    -webkit-box-shadow: 0px 0px;
+    box-shadow: 0px 0px;
+    background-color: transparent; }
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-text {
+  padding-top: 0;
+  color: black; }
+
+.navbar > .container-fluid .navbar-brand, .navbar > .container .navbar-brand {
+  color: black; }
 
 .intro {
   margin: 0; }
@@ -36,15 +59,16 @@ body {
     background-size: cover;
     height: 100vh;
     padding-top: 0; }
-    .intro .hero-image h1 {
-      font-family: "Pacifico", cursive;
-      font-size: 7em;
-      text-align: center;
+    .intro .hero-image .title {
       position: absolute;
       top: 33%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      color: white; }
+      transform: translate(-50%, -50%); }
+      .intro .hero-image .title h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 7em;
+        text-align: center;
+        color: white; }
     .intro .hero-image .fa-chevron-double-down {
       color: white;
       margin: 0;
@@ -53,7 +77,8 @@ body {
       left: 50%;
       transform: translate(-50%, -50%); }
       .intro .hero-image .fa-chevron-double-down:hover {
-        color: black; }
+        color: rgba(255, 255, 255, 0.9);
+        animation: bounce 1.5s infinite; }
     .intro .hero-image .buttons-hero-image {
       padding-top: 50vh; }
       .intro .hero-image .buttons-hero-image .btn {
@@ -63,9 +88,52 @@ body {
         width: 150px; }
         .intro .hero-image .buttons-hero-image .btn:hover {
           background-color: rgba(255, 255, 255, 0.3); }
-      .intro .hero-image .buttons-hero-image .left .btn {
-        float: right; }
+      .intro .hero-image .buttons-hero-image .left {
+        padding-left: 20%; }
+        .intro .hero-image .buttons-hero-image .left .btn {
+          float: right;
+          margin-right: 5%; }
       .intro .hero-image .buttons-hero-image .right .btn {
-        float: left; }
+        float: left;
+        margin-left: 5%; }
+
+.fixed-me {
+  transition: all 1s; }
+
+.fixed-me {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  padding: 0px  !important;
+  margin-bottom: 5px;
+  position: fixed;
+  top: 0;
+  z-index: 888;
+  width: 100%; }
+
+.navbar-me {
+  transition: all 1s; }
+
+.navbar-me {
+  background-color: transparent;
+  top: 0px;
+  border: 0px;
+  border-radius: 0px; }
+
+.navbar-collapse {
+  text-align: center;
+  border-top-width: 0px;
+  padding-top: 10px;
+  margin-top: 5px; }
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background-color: transparent; }
+
+.menu-collapsed-button {
+  margin: 20px 15px 10px 15px !important; }
+
+.navbar-inverse .navbar-toggle {
+  background-color: black; }
+
+.fixed-me {
+  color: black; }
 
 /*# sourceMappingURL=main.css.map */

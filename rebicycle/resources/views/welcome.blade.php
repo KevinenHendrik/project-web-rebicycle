@@ -3,7 +3,9 @@
 </div>
 <div class="intro">
     <div class="hero-image">
-        <h1 class="scroll-object">Rebicycle</h1>
+        <div class="title col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h1 class="scroll-object">Rebicycle</h1>
+        </div>
         <div class="buttons-hero-image">
             <div class="left col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <button type="button" class="btn btn-outline-primary btn-lg">Kopen</button>
@@ -18,7 +20,7 @@
 </div>
 <div class="container">
     <h2>en nog meer content maar kleiner</h2>
-    <i style="font-size:2em;" class="fas fa-chevron-double-down fa-6x"></i>
+    <i style="font-size:2em;" class="bounce fas fa-chevron-double-down fa-6x"></i>
     <p>nu gewoon saaie tekst bla bla duurt lang</p>
     <h1>wow grote titel nutteloos</h1>
     <h3>klein klein klein</h3>
