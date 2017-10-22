@@ -23,6 +23,16 @@ Route::get('/bike', function () {
     return view('pages/bike');
 });
 
+Route::get('/sellBike', function () {
+    return view('pages/sellBike');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+	//Routes when user is authenticated
+	Route::post('/storeNewBike','BikeController@storeNewBike');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
