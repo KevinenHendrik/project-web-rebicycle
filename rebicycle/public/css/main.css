@@ -97,6 +97,16 @@ body {
         float: left;
         margin-left: 5%; }
 
+.block.block-text {
+  text-align: center;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/memphis-colorful.png");
+  min-height: 20vh; }
+
+.block.block-image {
+  text-align: center;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/doodles.png");
+  min-height: 20vh; }
+
 .fixed-me {
   transition: all 1s; }
 

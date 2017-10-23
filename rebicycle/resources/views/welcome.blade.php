@@ -18,26 +18,43 @@
         <i style="font-size:2em;" class="fal fa-chevron-double-down"></i>
     </div>
 </div>
-<div class="container">
-    <h2>en nog meer content maar kleiner</h2>
-    <i style="font-size:2em;" class="bounce fas fa-chevron-double-down fa-6x"></i>
-    <p>nu gewoon saaie tekst bla bla duurt lang</p>
-    <h1>wow grote titel nutteloos</h1>
-    <h3>klein klein klein</h3>
-    <p>tekst last but not least</p>
-    <<p>test</p><h1>wow grote titel nutteloos</h1>
-    <h3>klein klein klein</h3>
-    <p>tekst last but not least</p>
-    <<p>test</p><h1>wow grote titel nutteloos</h1>
-    <h3>klein klein klein</h3>
-    <p>tekst last but not least</p>
-    <<p>test</p><h1>wow grote titel nutteloos</h1>
-    <h3>klein klein klein</h3>
-    <p>tekst last but not least</p>
-    <<p>test</p>
-    <<p>test</p><h1>wow grote titel nutteloos</h1>
-    <h3>klein klein klein</h3>
-    <p>tekst last but not least</p>
-    <<p>test</p>
+<div class="container-fluid">
+    <div class="block block-text col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <h2>test dit is een langere tekst naar 2 lijnen aub.</h2>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <i class="fal fa-chevron-double-down"></i>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <h2>nog zo'n lange tekst hopelijk ook op 2 lijnen.</h2>
+        </div>
+    </div>
+
+
+    <div class="block block-image col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <h2>test dit is een langere tekst naar 2 lijnen aub.</h2>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <i class="fal fa-chevron-double-down fa-8x"></i>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <h2>nog zo'n lange tekst hopelijk ook op 2 lijnen.</h2>
+        </div>
+    </div>
+
+    <div class="block block-text col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h1>Enkele aanraders:</h1>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <h2>test dit is een langere tekst naar 2 lijnen aub.</h2>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <i class="fal fa-chevron-double-down"></i>
+        </div>
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <h2>nog zo'n lange tekst hopelijk ook op 2 lijnen.</h2>
+        </div>
+    </div>
 
 @endsection
