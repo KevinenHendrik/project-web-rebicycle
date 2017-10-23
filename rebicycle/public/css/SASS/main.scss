@@ -2,19 +2,63 @@
 
 $font-main: Helvetica, sans-serif;
 
+@keyframes bounce {
+	0%, 50%, 100% {
+        transform: translate(-50%, -50%);
+	}
+	10%,60% {
+        transform: translate(-50%, -80%);
+	}
+
+	35%,75% {
+        transform: translate(-50%, -30%);
+	}
+}
+
+
 body {
     font-family: $font-main;
 }
 
+
+
 .navbar{
-    background-color: transparent;
-    font-size: 2em;
-    a{
-        color:white;
-        &:hover{
-            color: black;
+    background-color: rgba($color:#ffffff, $alpha: .8);
+    border: 0;
+    // font-size: 2em;
+    // a{
+    //     color:white;
+    //     &:hover{
+    //         color: black;
+    //     }
+    // }
+    .navbar-inverse{
+        // .navbar-toggle{
+        //     background-color: black;
+        // }
+        .navbar-collapse, .navbar-inverse .navbar-form{
+            border: 0;
+            font-size: 4em;
         }
     }
+    .dropdown .open{
+        border: 0;
+    }
+    .transparent .navbar-inverse .navbar-inner {
+        border-width: 0px;
+        -webkit-box-shadow: 0px 0px;
+        box-shadow: 0px 0px;
+        background-color: transparent;
+    }
+}
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-text{
+    padding-top: 0;
+    color:black;
+}
+
+.navbar > .container-fluid .navbar-brand, .navbar > .container .navbar-brand{
+    color:black;
 }
 
 .intro {
@@ -27,16 +71,18 @@ body {
         background-size: cover;
         height: 100vh;
         padding-top: 0;
-        h1{ 
-            font-family: $font-hero;
-            font-size: 7em;
-            text-align: center;
+        .title{
             position: absolute;
             top: 33%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
-            // position: fixed;
+            h1{ 
+                font-family: $font-hero;
+                font-size: 7em;
+                text-align: center;
+                color: white;
+                // position: fixed;
+            }
         }
         .fa-chevron-double-down{
             color: white;
@@ -47,7 +93,8 @@ body {
             transform: translate(-50%, -50%);
 
             &:hover{
-                color: black;
+                color:rgba($color:#ffffff, $alpha: .9);
+                animation: bounce 1.5s infinite;
             }
         }
         .buttons-hero-image{
@@ -63,13 +110,78 @@ body {
 
                 }
             }
-            .left .btn{
-                float:right;
+            .left{ 
+                padding-left: 20%;
+                .btn{
+                    float:right;
+                    margin-right: 5%;
+                }
             }
             .right .btn{
                 float: left;
+                margin-left: 5%;
             }
         }
 
     }
+}
+
+.block.block-text{
+        text-align: center;
+        background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/memphis-colorful.png");
+        min-height: 20vh;
+    }
+
+.block.block-image{
+    text-align: center;
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/doodles.png");
+
+    min-height: 20vh;
+    }
+
+
+.fixed-me{
+    transition: all 1s ;
+}
+
+.fixed-me{
+    background-color:rgba($color:#ffffff, $alpha: .4) !important;
+    padding: 0px  !important;
+    margin-bottom: 5px;
+    position: fixed;
+    top:0;
+	z-index:888;
+    width: 100%;
+}
+
+.navbar-me {
+    
+   transition: all 1s ;
+}
+.navbar-me{
+    background-color: transparent;
+    top: 0px;
+    border: 0px;
+    border-radius: 0px;
+}
+.navbar-collapse{
+    text-align: center;
+    border-top-width: 0px;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
+.menu-collapsed-button{
+    margin: 20px 15px 10px 15px !important;
+}
+
+.navbar-inverse .navbar-toggle{
+    background-color: black;
+}
+
+.fixed-me{
+    color: black;
 }

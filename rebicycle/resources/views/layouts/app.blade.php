@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+    <!-- <meta http-equiv="refresh" content="3" > -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,10 +19,13 @@
     <script defer src="{{ asset('js/fontawesome.js') }}"></script>
     <script defer src="{{ asset('js/light.js') }}"></script>
     <script defer src="{{ asset('js/solid.js') }}"></script>
+
+    <!-- custom scripts -->
+    <script defer src="{{ asset('js/rebicycle.js') }}"></script>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-me transparent navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
