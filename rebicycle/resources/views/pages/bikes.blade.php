@@ -3,7 +3,6 @@
 <div class="container">
     <div class="bicycles">
         <div class="bikeSale col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <div class="">
                 <img src="{{ asset('img/bikes/rob-bye-200735.jpg') }}">
                 <div class="bikeSaleLeft col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
                     <li><h3>Trek 2 mountain</h3></li>
@@ -15,7 +14,6 @@
                         <li><i class="fal fa-shopping-cart fa-2x"></i></li>
                     </ul>
                 </div>  
-            </div>
         </div>
     </div>
 </div>

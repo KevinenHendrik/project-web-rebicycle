@@ -52,6 +52,11 @@
                     <li><a href="/bike"><i class="fal fa-bicycle fa-fw"></i> bike</a></li>
                     <li><a href="/bikes"><i class="fal fa-bicycle fa-fw"></i> bikes</a></li>
                     
+                    
+                    <span class="fa-layers fa-fw">
+                    <i class="fal fa-shopping-cart fa-2x"></i>
+                    <span class="fa-layers-counter fa-4x ">1</span>
+                    </span>
 
                         <!-- Authentication Links -->
                         <li><a href="/"><i class="fal fa-shopping-cart"></i> winkelwagen</a></li>
@@ -105,7 +110,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="content container">
         @yield('content')
         </div>
     </div>

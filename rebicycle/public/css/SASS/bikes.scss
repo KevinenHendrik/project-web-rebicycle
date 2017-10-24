@@ -45,6 +45,12 @@
     }
 }
 
-.bicycles{
-    margin-top: 50px;
+.bicycles, .bicycle-single{
+    // margin-top: 50px;
+}
+
+.bicycle-single{
+    .hero-image img{
+        width: 100%;
+    }
 }
