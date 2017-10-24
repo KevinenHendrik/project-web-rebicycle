@@ -1,30 +1,33 @@
 @import url("https://fonts.googleapis.com/css?family=Pacifico");
 .bikeSale {
-  background-color: yellow;
-  height: 300px;
-  margin-bottom: 40px; }
+  background-color: white;
+  height: 100%; }
   .bikeSale img {
-    width: 90%;
-    margin-left: 5%; }
+    width: 100%;
+    margin-top: 12px; }
   .bikeSale h3 {
     margin: 0 !important;
     padding: 0 !important; }
   .bikeSale .bikeSaleRight {
-    text-align: right; }
+    text-align: right;
+    margin-right: 0;
+    padding-right: 0; }
     .bikeSale .bikeSaleRight .fa-heart {
-      color: white; }
+      color: rgba(255, 0, 0, 0.3); }
     .bikeSale .bikeSaleRight .fa-heart:hover {
       color: red; }
   .bikeSale li {
     list-style-type: none; }
 
+.bikeSaleLeft {
+  margin-left: 0;
+  padding-left: 0; }
+
 @keyframes bounce {
-  0%, 50%, 100% {
+  0%, 40%, 85%, 100% {
     transform: translate(-50%, -50%); }
-  10%,60% {
-    transform: translate(-50%, -80%); }
-  35%,75% {
-    transform: translate(-50%, -30%); } }
+  20%, 60% {
+    transform: translate(-50%, -70%); } }
 body {
   font-family: Helvetica, sans-serif; }
 
@@ -78,7 +81,7 @@ body {
       transform: translate(-50%, -50%); }
       .intro .hero-image .fa-chevron-double-down:hover {
         color: rgba(255, 255, 255, 0.9);
-        animation: bounce 1.5s infinite; }
+        animation: bounce 1s; }
     .intro .hero-image .buttons-hero-image {
       padding-top: 50vh; }
       .intro .hero-image .buttons-hero-image .btn {
@@ -88,14 +91,10 @@ body {
         width: 150px; }
         .intro .hero-image .buttons-hero-image .btn:hover {
           background-color: rgba(255, 255, 255, 0.3); }
-      .intro .hero-image .buttons-hero-image .left {
-        padding-left: 20%; }
-        .intro .hero-image .buttons-hero-image .left .btn {
-          float: right;
-          margin-right: 5%; }
+      .intro .hero-image .buttons-hero-image .left .btn {
+        float: right; }
       .intro .hero-image .buttons-hero-image .right .btn {
-        float: left;
-        margin-left: 5%; }
+        float: left; }
 
 .block.block-text {
   text-align: center;
@@ -134,14 +133,14 @@ body {
   padding-top: 10px;
   margin-top: 5px; }
 
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+  background: rgba(255, 255, 255, 0.6); }
+
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
   background-color: transparent; }
 
 .menu-collapsed-button {
   margin: 20px 15px 10px 15px !important; }
-
-.navbar-inverse .navbar-toggle {
-  background-color: black; }
 
 .fixed-me {
   color: black; }

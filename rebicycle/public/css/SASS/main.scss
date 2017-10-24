@@ -3,16 +3,12 @@
 $font-main: Helvetica, sans-serif;
 
 @keyframes bounce {
-	0%, 50%, 100% {
+	0%, 40%, 85%, 100% {
         transform: translate(-50%, -50%);
 	}
-	10%,60% {
-        transform: translate(-50%, -80%);
-	}
-
-	35%,75% {
-        transform: translate(-50%, -30%);
-	}
+	20%, 60% {
+        transform: translate(-50%, -70%);
+    }
 }
 
 
@@ -94,7 +90,7 @@ body {
 
             &:hover{
                 color:rgba($color:#ffffff, $alpha: .9);
-                animation: bounce 1.5s infinite;
+                animation: bounce 1s ;
             }
         }
         .buttons-hero-image{
@@ -110,16 +106,13 @@ body {
 
                 }
             }
-            .left{ 
-                padding-left: 20%;
+            .left{
                 .btn{
                     float:right;
-                    margin-right: 5%;
                 }
             }
             .right .btn{
                 float: left;
-                margin-left: 5%;
             }
         }
 
@@ -171,6 +164,10 @@ body {
     margin-top: 5px;
 }
 
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+    background: rgba($color:#ffffff, $alpha: .6);
+}
+
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
     background-color: transparent;
 }
@@ -179,7 +176,7 @@ body {
 }
 
 .navbar-inverse .navbar-toggle{
-    background-color: black;
+    // background-color: black;
 }
 
 .fixed-me{

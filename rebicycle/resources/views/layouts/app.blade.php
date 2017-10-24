@@ -46,19 +46,19 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                    <li><a href="/bike">bike</a></li>
-                    <li><a href="/bikes">bikes</a></li>
-                    </ul>
-
+                    <ul class="nav navbar-nav"></ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/bike"><i class="fal fa-bicycle fa-fw"></i> bike</a></li>
+                    <li><a href="/bikes"><i class="fal fa-bicycle fa-fw"></i> bikes</a></li>
+                    
+
                         <!-- Authentication Links -->
-                        <li><a href="/"><i class="fal fa-shopping-cart"></i></a></li>
+                        <li><a href="/"><i class="fal fa-shopping-cart"></i> winkelwagen</a></li>
                         @guest
                         <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <i class="fal fa-user"></i> <span class="caret"></span>
+                                    <i class="fal fa-user"></i> profiel <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
