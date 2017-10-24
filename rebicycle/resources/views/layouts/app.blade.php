@@ -39,8 +39,8 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <i class="fal fa-bicycle"></i>
-                        {{ config('app.name', 'Laravel') }}
+                        <i class="fal fa-bicycle"></i> Rebicycle
+                        <!-- {{ config('app.name', 'Laravel') }} -->
                     </a>
                 </div>
 
@@ -59,7 +59,7 @@
                     </span>
 
                         <!-- Authentication Links -->
-                        <li><a href="/"><i class="fal fa-shopping-cart"></i> winkelwagen</a></li>
+                        <!-- <li><a href="/"><i class="fal fa-shopping-cart"></i> winkelwagen</a></li> -->
                         @guest
                         <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
