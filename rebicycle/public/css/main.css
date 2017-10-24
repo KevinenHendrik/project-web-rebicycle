@@ -28,8 +28,29 @@
   .bikeSale li {
     list-style-type: none; }
 
-.bicycle-single .hero-image img {
+.bicycle-single img {
   width: 100%; }
+.bicycle-single .bicycle-picture {
+  padding: 5px; }
+.bicycle-single .bicycle {
+  background-color: white;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+  .bicycle-single .bicycle .details {
+    margin-left: 0;
+    padding-left: 0; }
+    .bicycle-single .bicycle .details .property {
+      font-size: 1em; }
+    .bicycle-single .bicycle .details .property-value {
+      font-size: 1.5em; }
+    .bicycle-single .bicycle .details ul {
+      padding-left: 0; }
+    .bicycle-single .bicycle .details li {
+      list-style-type: none; }
+    .bicycle-single .bicycle .details .description {
+      margin-top: 20px; }
+      .bicycle-single .bicycle .details .description p {
+        margin-top: -20px; }
 
 @keyframes bounce {
   0%, 40%, 85%, 100% {
