@@ -64,8 +64,8 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="/">
-                                        <i class="fal fa-bolt"></i>
-                                        test
+                                        <i class="fal fa-heart"></i>
+                                        favorieten
                                         </a>
                                         <a href="/">
                                         <i class="fal fa-car"></i>

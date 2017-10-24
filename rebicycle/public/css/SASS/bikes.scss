@@ -15,6 +15,7 @@
         text-align: right;
         margin-right: 0;
         padding-right: 0;
+        margin-top: 5px;
 
         .fa-heart{
             color:rgba(255,0,0,.3);
@@ -24,16 +25,26 @@
         .fa-heart:hover{
             color:red;
         }
+
+        li:first-child{
+            margin-bottom: 10px;
+        }
     }
 
+    .bikeSaleLeft{
+        margin-left: 0;
+        padding-left: 0;
+        margin-top: 5px;
+
+        li:first-child{
+            margin-bottom: 10px;
+        }
+    }
     li {
         list-style-type: none;
     }
-
-
 }
 
-.bikeSaleLeft{
-    margin-left: 0;
-    padding-left: 0;
+.bicycles{
+    margin-top: 50px;
 }
