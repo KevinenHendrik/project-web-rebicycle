@@ -50,7 +50,41 @@
 }
 
 .bicycle-single{
-    .hero-image img{
+    img{
         width: 100%;
+    }
+
+    .bicycle-picture{
+        padding: 5px;
+    }
+
+    .bicycle{
+        background-color: white;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        .details{    
+            margin-left: 0;
+            padding-left: 0;
+         
+            .property{
+                font-size: 1em;
+            }
+            .property-value{
+                font-size: 1.5em;
+            }
+            ul{
+                padding-left: 0;
+            }
+            li{
+                list-style-type: none;
+            }
+            .description{
+                margin-top: 20px;
+                p{
+                    margin-top: -20px;
+                }
+            }
+        }
     }
 }
