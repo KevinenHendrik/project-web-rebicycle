@@ -4,14 +4,14 @@
         <div class="flex-center position-ref full-height">
             <div class="sellBike">
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/storeNewBike" >
+                    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/editBike/{{$bike->bike_id}}" >
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('brand') ? ' has-error' : '' }}">
                             <label for="brand" class="col-md-4 control-label">Merknaam*</label>
 
                             <div class="col-md-6">
-                                <input id="brand" type="text" class="form-control" name="brand" value="{{ old('brand') }}" required autofocus>
+                                <input id="brand" type="text" class="form-control" name="brand" value="{{ $bike->brand }}" required autofocus>
 
                                 @if ($errors->has('brand'))
                                     <span class="help-block">
@@ -25,7 +25,7 @@
                             <label for="model" class="col-md-4 control-label">Model*</label>
 
                             <div class="col-md-6">
-                                <input id="model" type="text" class="form-control" name="model" value="{{ old('model') }}" required autofocus>
+                                <input id="model" type="text" class="form-control" name="model" value="{{ $bike->model }}" required autofocus>
 
                                 @if ($errors->has('model'))
                                     <span class="help-block">
@@ -57,7 +57,7 @@
                             <label for="model" class="col-md-4 control-label">Verkoopprijs*</label>
 
                             <div class="col-md-6">
-                                <input id="sellingPrice" type="text" class="form-control" name="sellingPrice" value="{{ old('sellingPrice') }}" required autofocus>
+                                <input id="sellingPrice" type="text" class="form-control" name="sellingPrice" value="{{ $bike->sellingPrice }}" required autofocus>
 
                                 @if ($errors->has('sellingPrice'))
                                     <span class="help-block">
@@ -71,7 +71,7 @@
                             <label for="description" class="col-md-4 control-label">Beschrijving*</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" type="text" class="form-control" name="description" required>{{ old('adres') }}</textarea>
+                                <textarea id="description" type="text" class="form-control" name="description" required>{{ $bike->description }}</textarea>
 
                                 @if ($errors->has('description'))
                                     <span class="help-block">
@@ -114,7 +114,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Zoekertje plaatsen
+                                    Zoekertje wijzigen
                                 </button>
                             </div>
                         </div>

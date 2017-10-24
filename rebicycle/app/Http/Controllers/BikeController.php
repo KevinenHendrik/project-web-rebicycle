@@ -87,4 +87,32 @@ class BikeController extends Controller
         
         } 
     }
+
+    public function showMyBikes(){
+    	$bike = new Bike();
+    	$owner_id = Auth::id();
+    	$myBikes = $bike->getAllMyBikes($owner_id);
+
+    	return view('pages/myBikes',
+            ['myBikes' => $myBikes,
+            ]);
+    }
+
+    public function openEditMyBike($bike_id){
+    	$bike = new Bike();
+    	$bikeMedia = new BikeMedia();
+    	$bikeToEdit = $bike->getMyBike($bike_id)->first();
+    	$bikeMediaToShow = $bikeMedia->getBikeMedia($bike_id)->first();
+
+    	return view('pages/editMyBike',
+    		[
+    		'bike' => $bikeToEdit,
+    		'bikeMedia' => $bikeMediaToShow,
+    		]);
+    }
+
+    public function deleteMyBike($id){
+
+    	return redirect('/myBikes');
+    }
 }

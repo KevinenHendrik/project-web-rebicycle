@@ -30,6 +30,10 @@ Route::get('/sellBike', function () {
 Route::group(['middleware' => 'auth'], function () {
 	//Routes when user is authenticated
 	Route::post('/storeNewBike','BikeController@storeNewBike');
+	Route::get('/myBikes', 'BikeController@showMyBikes');
+	Route::get('/editMyBike/{id}','BikeController@openEditMyBike');
+	Route::get('/deleteMyBike/{id}','BikeController@deleteMyBike');
+
 });
 
 
