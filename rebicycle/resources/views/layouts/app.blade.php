@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+    <!-- <meta http-equiv="refresh" content="3" > -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,10 +13,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+    <!-- Scripts font awesome -->
+    <script defer src="{{ asset('js/fontawesome.js') }}"></script>
+    <script defer src="{{ asset('js/light.js') }}"></script>
+    <script defer src="{{ asset('js/solid.js') }}"></script>
+
+    <!-- custom scripts -->
+    <script defer src="{{ asset('js/rebicycle.js') }}"></script>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-me transparent navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -29,22 +39,47 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
+                        <i class="fal fa-bicycle"></i>
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
+                    <ul class="nav navbar-nav"></ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/bike"><i class="fal fa-bicycle fa-fw"></i> bike</a></li>
+                    <li><a href="/bikes"><i class="fal fa-bicycle fa-fw"></i> bikes</a></li>
+                    
+
                         <!-- Authentication Links -->
+                        <li><a href="/"><i class="fal fa-shopping-cart"></i> winkelwagen</a></li>
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                        <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <i class="fal fa-user"></i> profiel <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="/">
+                                        <i class="fal fa-heart"></i>
+                                        favorieten
+                                        </a>
+                                        <a href="/">
+                                        <i class="fal fa-car"></i>
+                                        test
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -70,11 +105,13 @@
                 </div>
             </div>
         </nav>
-
+        <div class="container">
         @yield('content')
+        </div>
     </div>
 
-    <!-- Scripts -->
+    <!--Scripts-->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
 </body>
 </html>

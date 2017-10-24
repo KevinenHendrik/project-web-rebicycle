@@ -1,11 +1,184 @@
+@import 'bikes','fonts';
+
+$font-main: Helvetica, sans-serif;
+
+@keyframes bounce {
+	0%, 40%, 85%, 100% {
+        transform: translate(-50%, -50%);
+	}
+	20%, 60% {
+        transform: translate(-50%, -70%);
+    }
+}
+
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $font-main;
 }
 
-* {
-    background-color: red;
+
+
+.navbar{
+    background-color: rgba($color:#ffffff, $alpha: .8);
+    border: 0;
+    // font-size: 2em;
+    // a{
+    //     color:white;
+    //     &:hover{
+    //         color: black;
+    //     }
+    // }
+    .navbar-inverse{
+        // .navbar-toggle{
+        //     background-color: black;
+        // }
+        .navbar-collapse, .navbar-inverse .navbar-form{
+            border: 0;
+            font-size: 4em;
+        }
+    }
+    .dropdown .open{
+        border: 0;
+    }
+    .transparent .navbar-inverse .navbar-inner {
+        border-width: 0px;
+        -webkit-box-shadow: 0px 0px;
+        box-shadow: 0px 0px;
+        background-color: transparent;
+    }
 }
 
-.bike {
-    font-size: 20em;
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-text{
+    padding-top: 0;
+    color:black;
+}
+
+.navbar > .container-fluid .navbar-brand, .navbar > .container .navbar-brand{
+    color:black;
+}
+
+.intro {
+    margin:0;
+    .hero-image{
+        background-image: url("https://i.imgur.com/6UeT88z.jpg");
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        padding-top: 0;
+        .title{
+            position: absolute;
+            top: 33%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            h1{ 
+                font-family: $font-hero;
+                font-size: 7em;
+                text-align: center;
+                color: white;
+                // position: fixed;
+            }
+        }
+        .fa-chevron-double-down{
+            color: white;
+            margin: 0;
+            position: absolute;
+            top: 94%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            &:hover{
+                color:rgba($color:#ffffff, $alpha: .9);
+                animation: bounce 1s ;
+            }
+        }
+        .buttons-hero-image{
+            padding-top: 50vh;
+            .btn{
+                background-color: transparent;
+                border: 1px solid white;
+                color: white;
+                width: 150px;
+
+                &:hover{
+                    background-color: rgba($color:#ffffff, $alpha: .3);
+
+                }
+            }
+            .left{
+                .btn{
+                    float:right;
+                }
+            }
+            .right .btn{
+                float: left;
+            }
+        }
+
+    }
+}
+
+.block.block-text{
+        text-align: center;
+        background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/memphis-colorful.png");
+        min-height: 20vh;
+    }
+
+.block.block-image{
+    text-align: center;
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/doodles.png");
+
+    min-height: 20vh;
+    }
+
+
+.fixed-me{
+    transition: all 1s ;
+}
+
+.fixed-me{
+    background-color:rgba($color:#ffffff, $alpha: .4) !important;
+    padding: 0px  !important;
+    margin-bottom: 5px;
+    position: fixed;
+    top:0;
+	z-index:888;
+    width: 100%;
+}
+
+.navbar-me {
+    
+   transition: all 1s ;
+}
+.navbar-me{
+    background-color: transparent;
+    top: 0px;
+    border: 0px;
+    border-radius: 0px;
+}
+.navbar-collapse{
+    text-align: center;
+    border-top-width: 0px;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+    background: rgba($color:#ffffff, $alpha: .6);
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
+.menu-collapsed-button{
+    margin: 20px 15px 10px 15px !important;
+}
+
+.navbar-inverse .navbar-toggle{
+    // background-color: black;
+}
+
+.fixed-me{
+    color: black;
 }

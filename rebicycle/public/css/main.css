@@ -1,10 +1,156 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+.bikeSale {
+  background-color: white;
+  height: 100%; }
+  .bikeSale img {
+    width: 100%;
+    margin-top: 12px; }
+  .bikeSale h3 {
+    margin: 0 !important;
+    padding: 0 !important; }
+  .bikeSale .bikeSaleRight {
+    text-align: right;
+    margin-right: 0;
+    padding-right: 0;
+    margin-top: 5px; }
+    .bikeSale .bikeSaleRight .fa-heart {
+      color: rgba(255, 0, 0, 0.3); }
+    .bikeSale .bikeSaleRight .fa-heart:hover {
+      color: red; }
+    .bikeSale .bikeSaleRight li:first-child {
+      margin-bottom: 10px; }
+  .bikeSale .bikeSaleLeft {
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 5px; }
+    .bikeSale .bikeSaleLeft li:first-child {
+      margin-bottom: 10px; }
+  .bikeSale li {
+    list-style-type: none; }
+
+.bicycles {
+  margin-top: 50px; }
+
+@keyframes bounce {
+  0%, 40%, 85%, 100% {
+    transform: translate(-50%, -50%); }
+  20%, 60% {
+    transform: translate(-50%, -70%); } }
 body {
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: Helvetica, sans-serif; }
 
-* {
-  background-color: red; }
+.navbar {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 0; }
+  .navbar .navbar-inverse .navbar-collapse, .navbar .navbar-inverse .navbar-inverse .navbar-form {
+    border: 0;
+    font-size: 4em; }
+  .navbar .dropdown .open {
+    border: 0; }
+  .navbar .transparent .navbar-inverse .navbar-inner {
+    border-width: 0px;
+    -webkit-box-shadow: 0px 0px;
+    box-shadow: 0px 0px;
+    background-color: transparent; }
 
-.bike {
-  font-size: 20em; }
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-text {
+  padding-top: 0;
+  color: black; }
+
+.navbar > .container-fluid .navbar-brand, .navbar > .container .navbar-brand {
+  color: black; }
+
+.intro {
+  margin: 0; }
+  .intro .hero-image {
+    background-image: url("https://i.imgur.com/6UeT88z.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    padding-top: 0; }
+    .intro .hero-image .title {
+      position: absolute;
+      top: 33%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+      .intro .hero-image .title h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 7em;
+        text-align: center;
+        color: white; }
+    .intro .hero-image .fa-chevron-double-down {
+      color: white;
+      margin: 0;
+      position: absolute;
+      top: 94%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+      .intro .hero-image .fa-chevron-double-down:hover {
+        color: rgba(255, 255, 255, 0.9);
+        animation: bounce 1s; }
+    .intro .hero-image .buttons-hero-image {
+      padding-top: 50vh; }
+      .intro .hero-image .buttons-hero-image .btn {
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        width: 150px; }
+        .intro .hero-image .buttons-hero-image .btn:hover {
+          background-color: rgba(255, 255, 255, 0.3); }
+      .intro .hero-image .buttons-hero-image .left .btn {
+        float: right; }
+      .intro .hero-image .buttons-hero-image .right .btn {
+        float: left; }
+
+.block.block-text {
+  text-align: center;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/memphis-colorful.png");
+  min-height: 20vh; }
+
+.block.block-image {
+  text-align: center;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/doodles.png");
+  min-height: 20vh; }
+
+.fixed-me {
+  transition: all 1s; }
+
+.fixed-me {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  padding: 0px  !important;
+  margin-bottom: 5px;
+  position: fixed;
+  top: 0;
+  z-index: 888;
+  width: 100%; }
+
+.navbar-me {
+  transition: all 1s; }
+
+.navbar-me {
+  background-color: transparent;
+  top: 0px;
+  border: 0px;
+  border-radius: 0px; }
+
+.navbar-collapse {
+  text-align: center;
+  border-top-width: 0px;
+  padding-top: 10px;
+  margin-top: 5px; }
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+  background: rgba(255, 255, 255, 0.6); }
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background-color: transparent; }
+
+.menu-collapsed-button {
+  margin: 20px 15px 10px 15px !important; }
+
+.fixed-me {
+  color: black; }
 
 /*# sourceMappingURL=main.css.map */
