@@ -99,7 +99,7 @@ class BikeController extends Controller
 
     public function openABike($bike_id){
         $bike = new Bike();
-        $bikeToShow = $bike->getABike($bike_id);
+        $bikeToShow = $bike->getABike($bike_id)->first();
 
         $bikeMedia = new BikeMedia();
         $bikeMediaToShow = $bikeMedia->getBikeMediaWithBikeId($bike_id);
@@ -138,6 +138,8 @@ class BikeController extends Controller
         $bikeToEdit = App\Bike::find(1);
         $bikeToEdit->name = 'New Bike Name';
         $bikeToEdit->save();
+
+
     }
 
     public function deleteMyBike($bike_id){
