@@ -99,6 +99,33 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Zoekertje wijzigen
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <h3>Afbeeldingen</h3>
+                    <div class="container">
+                        @foreach ($bikeMedia as $key => $image)
+                            <div class="col-md-2">
+                                <img style="width: 100%" src="{{ asset($image->path)  }}">
+                                @if($image->isMainImage)
+                                    <p>Ingesteld als hoofdafbeelding</p>
+                                @else
+                                    <a href="/setAsMainImage/{{$image->bikeMedia_id}}">Instellen als hoofdafbeelding</a>
+                                @endif
+                                <a href="/deleteBikeMedia/{{$image->bikeMedia_id}}">Verwijderen</a>
+                            </div>                            
+                        @endforeach
+                    </div>
+
+                    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/addBikeMedia/{{$bike->bike_id}}" >
+                        {{ csrf_field() }}
+
                         <div class="form-group{{ $errors->has('images') ? ' has-error' : '' }}">
                             <label for="images" class="col-md-4 control-label">Voeg één of meerdere afbeeldingen toe*</label>
                             <div class="col-md-6">
@@ -108,14 +135,6 @@
                                         <strong>{{ $errors->first('images') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Zoekertje wijzigen
-                                </button>
                             </div>
                         </div>
                     </form>

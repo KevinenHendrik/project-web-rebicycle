@@ -5,7 +5,7 @@
             <h2>Mijn zoekertjes</h2>
         @foreach ($myBikes as $key => $bike)
             <div class="container">
-            	<div class="col-md-2"><img style="width: 100%" src="{{ $bike->mediaPath }}"></div>
+            	<div class="col-md-2"><img style="width: 100%" src="{{ asset($bike->mediaPath)  }}"></div>
             	<div>
             		<h4>{{$bike->brand}}: {{$bike->model}}</h4>
 	            	<p>{{$bike->sellingPrice}} euro</p>

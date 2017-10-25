@@ -7,6 +7,16 @@ use DB;
 
 class Bike extends Model
 {
+    public function getAllBikes(){
+        return DB::table('bikes')
+            ->join('bikeMedia','bikeMedia.bike_id','=','bikes.bike_id')
+            ->where([
+            ['bikeMedia.isMainImage','=', True],
+            ])
+            ->select('bikes.*','bikeMedia.path as mediaPath')
+            ->get();
+    }
+
     public function getAllMyBikes($owner_id)
     {
     	return DB::table('bikes')
@@ -24,6 +34,13 @@ class Bike extends Model
     	return DB::table('bikes')
     	->where('bike_id','=',$bike_id)
     	->get();
+    }
+
+    public function deleteABike($bike_id)
+    {
+        DB::table('bikes')
+        ->where('bike_id', '=', $bike_id)
+        ->delete();
     }
 
 

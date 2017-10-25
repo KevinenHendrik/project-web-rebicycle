@@ -20,7 +20,9 @@ class CreateBikeMediaTable extends Migration
             $table->integer('bike_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('bike_id')->references('bike_id')->on('bikes');
+            $table->foreign('bike_id')->references('bike_id')
+                ->on('bikes')
+                ->onDelete('cascade');
         });
     }
 

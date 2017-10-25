@@ -45,7 +45,7 @@ class BikeController extends Controller
             $images = $request->images;
             $this->storeNewBikeMedia($images,$bike_id);
             
-            return redirect('/home')->with('succesBericht', 'Uw fietszoekertje werd geplaatst');
+            return redirect('/myBikes')->with('succesBericht', 'Uw fietszoekertje werd geplaatst');
 
         } else{
         		return Redirect::back()->withErrors($validator);
@@ -88,6 +88,15 @@ class BikeController extends Controller
         } 
     }
 
+    public function showAllBikes(){
+        $bike = new Bike();
+        $allBikes = $bike->getAllBikes();
+
+        return view('pages/bikes',
+            ['allBikes' => $allBikes,
+            ]);
+    }
+
     public function showMyBikes(){
     	$bike = new Bike();
     	$owner_id = Auth::id();
@@ -102,7 +111,7 @@ class BikeController extends Controller
     	$bike = new Bike();
     	$bikeMedia = new BikeMedia();
     	$bikeToEdit = $bike->getMyBike($bike_id)->first();
-    	$bikeMediaToShow = $bikeMedia->getBikeMedia($bike_id)->first();
+    	$bikeMediaToShow = $bikeMedia->getBikeMediaWithBikeId($bike_id);
 
     	return view('pages/editMyBike',
     		[
@@ -111,8 +120,35 @@ class BikeController extends Controller
     		]);
     }
 
-    public function deleteMyBike($id){
+    public function deleteMyBike($bike_id){
+        $bike = new Bike();
+        $bikeMedia = new BikeMedia();
 
-    	return redirect('/myBikes');
+        $bikeMediaToDelete = $bikeMedia->getBikeMediaWithBikeId($bike_id);
+
+        foreach ($bikeMediaToDelete as $media) {
+            $filePath = $media->path;
+            unlink($filePath);
+        }
+
+        $bike->deleteABike($bike_id);
+
+        return redirect('/myBikes');
+    }
+
+    public function deleteBikeMedia($bikeMedia_id){
+
+        $bikeMedia = new bikeMedia();
+        $bikeMediaToDelete = $bikeMedia->getBikeMediaWithBikeMediaId($bikeMedia_id)->first();
+
+        if($bikeMediaToDelete->isMainImage){
+            return Redirect::back()->with('mainImageNotification','Een hoofdafbeelding kan niet verwijderd worden. Stel eerst een ander afbeelding in als hoofdafbeelding.');
+        }
+
+        $filePath = $bikeMediaToDelete->path;
+        $bikeMedia->deleteABikeMedia($bikeMedia_id);
+        unlink($filePath);     
+        
+        return Redirect::back();
     }
 }
