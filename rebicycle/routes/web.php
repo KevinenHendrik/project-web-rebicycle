@@ -28,8 +28,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/storeNewBike','BikeController@storeNewBike');
 	Route::get('/myBikes', 'BikeController@showMyBikes');
 	Route::get('/editMyBike/{id}','BikeController@openEditMyBike');
+	Route::post('/editMyBike/{id}','BikeController@editMyBike');
 	Route::get('/deleteMyBike/{id}','BikeController@deleteMyBike');
 	Route::get('/deleteBikeMedia/{id}','BikeController@deleteBikeMedia');
+	Route::get('/addBikeMedia/{id}','BikeController@addBikeMedia');
+
+
 
 
 });

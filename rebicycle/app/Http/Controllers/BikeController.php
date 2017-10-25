@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Bike;
+use \App\Bike;
 use App\BikeMedia;
 use Validator;
 use Auth;
@@ -134,10 +134,34 @@ class BikeController extends Controller
     		]);
     }
     
-    public function editMyBike(){
-        $bikeToEdit = App\Bike::find(1);
-        $bikeToEdit->name = 'New Bike Name';
-        $bikeToEdit->save();
+    public function editMyBike(Request $request, $bike_id){
+        $bike = new Bike();
+
+         $validator = Validator::make($request->all(), [
+          'brand' => 'required',
+          'model' => 'required',
+          'category' => 'required',
+          'sellingPrice' => 'required',
+          'description' => 'required',
+          'quality' => 'required'
+        ]);
+
+        if ($validator->passes()){
+            $bikeToEdit = $bike::find($bike_id);
+            $bikeToEdit->brand = $request->brand;
+            $bikeToEdit->model = $request->model;
+            $bikeToEdit->category = $request->category;
+            $bikeToEdit->description = $request->description;
+            $bikeToEdit->quality = $request->quality;
+            $bikeToEdit->save();
+
+            return Redirect::back()->with('succesMessage','Uw fietszoekertje werd gewijzigd.');;
+
+        }
+        else
+        {
+            return Redirect::back()->withErrors($validator);
+        }
 
 
     }
@@ -156,6 +180,10 @@ class BikeController extends Controller
         $bike->deleteABike($bike_id);
 
         return redirect('/myBikes');
+    }
+
+    public function addBikeMedia($bike_id){
+        
     }
 
     public function deleteBikeMedia($bikeMedia_id){

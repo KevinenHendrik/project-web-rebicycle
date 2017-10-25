@@ -7,6 +7,8 @@ use DB;
 
 class Bike extends Model
 {
+    protected $primaryKey = 'bike_id';
+
     public function getAllBikes(){
         return DB::table('bikes')
             ->join('bikeMedia','bikeMedia.bike_id','=','bikes.bike_id')
