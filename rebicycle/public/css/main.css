@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Pacifico");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 .bikeSale {
   background-color: white;
   height: 100%; }
@@ -52,13 +53,27 @@
       .bicycle-single .bicycle .details .description p {
         margin-top: -20px; }
 
+.bicycle-recommended {
+  margin-top: 50px;
+  padding-bottom: 50px;
+  margin-bottom: 50px; }
+  .bicycle-recommended .bicycles {
+    background-color: black;
+    margin-top: -10em;
+    text-align: left; }
+    .bicycle-recommended .bicycles span {
+      font-size: 1.6em; }
+
+.filter-button {
+  margin: 12px; }
+
 @keyframes bounce {
   0%, 40%, 85%, 100% {
     transform: translate(-50%, -50%); }
   20%, 60% {
     transform: translate(-50%, -70%); } }
-body {
-  font-family: Helvetica, sans-serif; }
+h1, h2, h3, h4, h5, h6, p, a {
+  font-family: "Roboto", sans-serif, 400; }
 
 .content:not(.intro) {
   margin-top: 50px; }
@@ -132,12 +147,25 @@ body {
 .block.block-text {
   text-align: center;
   background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/memphis-colorful.png");
-  min-height: 20vh; }
+  min-height: 20vh;
+  padding-top: 5em;
+  padding-bottom: 5em; }
 
 .block.block-image {
   text-align: center;
-  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/doodles.png");
-  min-height: 20vh; }
+  background-image: url("https://i.imgur.com/cBoQCCi.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 50vh; }
+  .block.block-image h1 {
+    font-family: "Pacifico", cursive;
+    color: white;
+    padding-top: 5em; }
+
+.navbar-inverse .navbar-collapse {
+  background-color: rgba(255, 255, 255, 0.8); }
 
 .fixed-me {
   transition: all 1s; }
@@ -175,5 +203,77 @@ body {
 
 .fixed-me {
   color: black; }
+
+/* The side navigation menu */
+.sidenav {
+  padding-left: 12px;
+  height: 100%;
+  /* 100% Full-height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 5000;
+  /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #f0f0f0;
+  /* Black*/
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidenav */ }
+
+/* The navigation menu links */
+.sidenav p {
+  display: block;
+  transition: 0.3s; }
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus {
+  color: #f1f1f1; }
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px; }
+
+#slidecontainer {
+  width: 80%;
+  /* Width of the outside container */
+  margin-left: 10%; }
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s; }
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer; }
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer; }
 
 /*# sourceMappingURL=main.css.map */
