@@ -8,7 +8,7 @@
         </div>
         <div class="buttons-hero-image">
             <div class="left col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                <button type="button" class="btn btn-outline-primary btn-lg">Kopen</button>
+                <a href="/bikes"><button type="button" class="btn btn-outline-primary btn-lg">Kopen</button></a>
             </div>
             <div class="right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <button type="button" class="btn btn-outline btn-lg">Verkopen</button>
