@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bike', function () {
-    return view('pages/bike');
-});
+Route::get('/bike/{id}', 'BikeController@openABike');
 
 Route::get('/sellBike', function () {
     return view('pages/sellBike');

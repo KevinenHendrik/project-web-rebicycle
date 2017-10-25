@@ -29,7 +29,7 @@ class Bike extends Model
         ->get();
     }
 
-    public function getMyBike($bike_id)
+    public function getABike($bike_id)
     {
     	return DB::table('bikes')
     	->where('bike_id','=',$bike_id)

@@ -97,6 +97,20 @@ class BikeController extends Controller
             ]);
     }
 
+    public function openABike($bike_id){
+        $bike = new Bike();
+        $bikeToShow = $bike->getABike($bike_id);
+
+        $bikeMedia = new BikeMedia();
+        $bikeMediaToShow = $bikeMedia->getBikeMediaWithBikeId($bike_id);
+
+        return view('pages/bike',
+            [
+            'bikeToShow' => $bikeToShow,
+            'bikeMedia' => $bikeMediaToShow,
+            ]);
+    }
+
     public function showMyBikes(){
     	$bike = new Bike();
     	$owner_id = Auth::id();
@@ -110,7 +124,7 @@ class BikeController extends Controller
     public function openEditMyBike($bike_id){
     	$bike = new Bike();
     	$bikeMedia = new BikeMedia();
-    	$bikeToEdit = $bike->getMyBike($bike_id)->first();
+    	$bikeToEdit = $bike->getABike($bike_id)->first();
     	$bikeMediaToShow = $bikeMedia->getBikeMediaWithBikeId($bike_id);
 
     	return view('pages/editMyBike',
@@ -118,6 +132,12 @@ class BikeController extends Controller
     		'bike' => $bikeToEdit,
     		'bikeMedia' => $bikeMediaToShow,
     		]);
+    }
+    
+    public function editMyBike(){
+        $bikeToEdit = App\Bike::find(1);
+        $bikeToEdit->name = 'New Bike Name';
+        $bikeToEdit->save();
     }
 
     public function deleteMyBike($bike_id){
