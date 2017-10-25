@@ -49,7 +49,7 @@
                     <ul class="nav navbar-nav"></ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/bikes"><i class="fal fa-bicycle fa-fw"></i> bikes</a></li>
+                    <li><a href="/bikes"><i class="fal fa-bicycle fa-fw"></i> aanbod</a></li>
                     
                     
                     <span class="fa-layers fa-fw">
@@ -62,7 +62,7 @@
                         @guest
                         <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <i class="fal fa-user"></i> profiel <span class="caret"></span>
+                                    <i class="fal fa-user"></i> aanmelden <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
