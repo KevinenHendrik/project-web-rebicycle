@@ -19,11 +19,9 @@
 
         .fa-heart{
             color:rgba(255,0,0,.3);
-            
-        }
-
-        .fa-heart:hover{
-            color:red;
+            &:hover{
+                color:red;
+            }   
         }
 
         li:first-child{
