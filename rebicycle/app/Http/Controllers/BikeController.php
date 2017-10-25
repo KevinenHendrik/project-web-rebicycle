@@ -107,7 +107,7 @@ class BikeController extends Controller
         return view('pages/bike',
             [
             'bikeToShow' => $bikeToShow,
-            'bikeMedia' => $bikeMediaToShow,
+            'bikeMediaToShow' => $bikeMediaToShow,
             ]);
     }
 
