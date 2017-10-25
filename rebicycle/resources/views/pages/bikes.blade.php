@@ -44,13 +44,12 @@
     </button>
     <div class="bicycles">
         @foreach($allBikes as $key => $bike)
-        <p>{{ $bike->bike_id }}</p>
-        <a href="/bike">
+        <a href="/bike/{{ $bike->bike_id }}">
         <div class="bikeSale col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-                <img src="{{ asset('img/bikes/rob-bye-200735.jpg') }}">
+                <img src="{{ asset($bike->mediaPath) }}">
                 <div class="bikeSaleLeft col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                    <li><h3>Trek 2 mountain</h3></li>
-                    <li><span><i class="fal fa-euro-sign"></i> 200</span></li>
+                    <li><h3>{{ $bike->brand }} {{ $bike->model }}</h3></li>
+                    <li><span><i class="fal fa-euro-sign"></i> {{ $bike->sellingPrice }}</span></li>
                 </div>
                 <div class="bikeSaleRight col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                     <ul>

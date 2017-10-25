@@ -8,13 +8,12 @@
         </div>
         <div class="buttons-hero-image">
             <div class="left col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                <a href="/bikes"><button type="button" class="btn btn-outline-primary btn-lg">Kopen</button></a>
-            </div>
+                    <a href="/sellBike"><button type="button" class="btn btn-outline btn-lg">Verkopen</button></a>
+                </div>
             <div class="right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                <button type="button" class="btn btn-outline btn-lg">Verkopen</button>
-            </div>
+                    <a href="/bikes"><button type="button" class="btn btn-outline-primary btn-lg">Kopen</button></a>
+                </div>
         </div>
-
         <i class="fal fa-chevron-double-down fa-2x"></i>
     </div>
 </div>

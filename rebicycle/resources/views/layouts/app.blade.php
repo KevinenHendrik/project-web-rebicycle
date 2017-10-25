@@ -49,7 +49,6 @@
                     <ul class="nav navbar-nav"></ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/bike"><i class="fal fa-bicycle fa-fw"></i> bike</a></li>
                     <li><a href="/bikes"><i class="fal fa-bicycle fa-fw"></i> bikes</a></li>
                     
                     
@@ -68,14 +67,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="/">
-                                        <i class="fal fa-heart"></i>
-                                        favorieten
-                                        </a>
-                                        <a href="/">
-                                        <i class="fal fa-car"></i>
-                                        test
-                                        </a>
+                                        <a href="/login"></i>aanmelden</a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
@@ -90,10 +82,11 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a class="btn" href="../myBikes">Mijn fietsen</a></li>                                </li>
+                                    <li><a class="btn disabled" href="#">Favorieten</a></li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a class="btn" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout

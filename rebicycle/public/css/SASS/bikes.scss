@@ -92,16 +92,97 @@
     padding-bottom: 50px;
     margin-bottom: 50px;
     .bicycles{
-        background-color: black;
         margin-top: -10em;
-        text-align: left;
+        // text-align: left;
+        .bikeSaleLeft{
+            text-align: left;
+        }
+        .bikeSaleRight{
+            float: right;
+        }
         span{
             font-size: 1.6em;
+        }
+        h1{
+            margin-top: 3em;
+            text-align: center;
         }
     }
 }
 
 .filter-button{
-    // font-size: 2em;
     margin:12px;
+}
+
+
+// w3schools sidenav
+/* The side navigation menu */
+.sidenav {
+    // margin-left: 12px;
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 5000; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: rgb(240, 240, 240); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+
+    /* The navigation menu links */
+    p {
+        display: block;
+        transition: 0.3s
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    a:hover, .offcanvas a:focus{
+        color: #f1f1f1;
+    }
+
+    /* Position and style the close button (top right corner) */
+    .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+}
+
+#slidecontainer {
+    width: 80%; /* Width of the outside container */
+    margin-left: 10%;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+
+    ::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%; 
+        background: #4CAF50;
+        cursor: pointer;
+    }
+
+    ::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #4CAF50;
+        cursor: pointer;
+    }
 }
