@@ -15,12 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bikes', function () {
-    return view('pages/bikes');
-});
-
-
-
 Route::get('/bike', function () {
     return view('pages/bike');
 });
@@ -29,7 +23,7 @@ Route::get('/sellBike', function () {
     return view('pages/sellBike');
 });
 
-Route::get('/allbikes', 'BikeController@showAllBikes');
+Route::get('/bikes', 'BikeController@showAllBikes');
 
 Route::group(['middleware' => 'auth'], function () {
 	//Routes when user is authenticated
