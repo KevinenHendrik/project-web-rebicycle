@@ -16,8 +16,8 @@
     margin-top: 5px; }
     .bikeSale .bikeSaleRight .fa-heart {
       color: rgba(255, 0, 0, 0.3); }
-    .bikeSale .bikeSaleRight .fa-heart:hover {
-      color: red; }
+      .bikeSale .bikeSaleRight .fa-heart:hover {
+        color: red; }
     .bikeSale .bikeSaleRight li:first-child {
       margin-bottom: 10px; }
   .bikeSale .bikeSaleLeft {
@@ -144,9 +144,13 @@ h1, h2, h3, h4, h5, h6, p, a {
       .intro .hero-image .buttons-hero-image .right .btn {
         float: left; }
 
+.bicycles h2 {
+  margin-top: 2em;
+  padding-top: 1em; }
+
 .block.block-text {
   text-align: center;
-  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/memphis-colorful.png");
+  background-color: white;
   min-height: 20vh;
   padding-top: 5em;
   padding-bottom: 5em; }
@@ -163,9 +167,6 @@ h1, h2, h3, h4, h5, h6, p, a {
     font-family: "Pacifico", cursive;
     color: white;
     padding-top: 5em; }
-
-.navbar-inverse .navbar-collapse {
-  background-color: rgba(255, 255, 255, 0.8); }
 
 .fixed-me {
   transition: all 1s; }
@@ -206,7 +207,6 @@ h1, h2, h3, h4, h5, h6, p, a {
 
 /* The side navigation menu */
 .sidenav {
-  padding-left: 12px;
   height: 100%;
   /* 100% Full-height */
   width: 0;
@@ -224,24 +224,21 @@ h1, h2, h3, h4, h5, h6, p, a {
   padding-top: 60px;
   /* Place content 60px from the top */
   transition: 0.5s;
-  /* 0.5 second transition effect to slide in the sidenav */ }
-
-/* The navigation menu links */
-.sidenav p {
-  display: block;
-  transition: 0.3s; }
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .offcanvas a:focus {
-  color: #f1f1f1; }
-
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px; }
+  /* 0.5 second transition effect to slide in the sidenav */
+  /* The navigation menu links */
+  /* When you mouse over the navigation links, change their color */
+  /* Position and style the close button (top right corner) */ }
+  .sidenav p {
+    display: block;
+    transition: 0.3s; }
+  .sidenav a:hover, .sidenav .offcanvas a:focus {
+    color: #f1f1f1; }
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px; }
 
 #slidecontainer {
   width: 80%;
@@ -259,21 +256,19 @@ h1, h2, h3, h4, h5, h6, p, a {
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s; }
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #4CAF50;
-  cursor: pointer; }
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #4CAF50;
-  cursor: pointer; }
+  .slider ::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer; }
+  .slider ::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer; }
 
 /*# sourceMappingURL=main.css.map */
