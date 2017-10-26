@@ -123,6 +123,7 @@
                         @endforeach
                     </div>
 
+                    <h4>Afbeelding toevoegen</h4>
                     <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/addBikeMedia/{{$bike->bike_id}}" >
                         {{ csrf_field() }}
 
@@ -135,6 +136,13 @@
                                         <strong>{{ $errors->first('images') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Afbeelding toevoegen
+                                </button>
                             </div>
                         </div>
                     </form>

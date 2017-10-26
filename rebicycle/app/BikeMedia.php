@@ -9,6 +9,7 @@ class BikeMedia extends Model
 {
     //
     protected $table = 'bikeMedia';
+    protected $primaryKey = 'bikeMedia_id';
 
     public function getBikeMediaWithBikeId($bike_id){
     	return DB::table('bikeMedia')

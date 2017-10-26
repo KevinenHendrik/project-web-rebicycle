@@ -18,6 +18,7 @@ class BikeController extends Controller
     	$bikeMedia = new BikeMedia();
     	$owner_id = Auth::id();
     	$status = 'for sale'; //sellingstatus of the bike that will be sold
+        $setAlsoMainImage = True;
 
         $validator = Validator::make($request->all(), [
           'brand' => 'required',
@@ -41,9 +42,9 @@ class BikeController extends Controller
             $bike->owner_id = $owner_id;
             $bike->save();
 
-            $bike_id = $bike->id;
+            $bike_id = $bike->bike_id;
             $images = $request->images;
-            $this->storeNewBikeMedia($images,$bike_id);
+            $this->storeNewBikeMedia($images,$bike_id, $setAlsoMainImage);
             
             return redirect('/myBikes')->with('succesBericht', 'Uw fietszoekertje werd geplaatst');
 
@@ -52,7 +53,7 @@ class BikeController extends Controller
         }
     }
 
-    public function storeNewBikeMedia($images,$bike_id){
+    public function storeNewBikeMedia($images,$bike_id, $setAlsoMainImage){
 	
         foreach ($images as $key =>  $image) {
             $regels = array('image' => 'required');//|mimes:jpeg,bmp,png,gif,jpg,svg'
@@ -64,7 +65,7 @@ class BikeController extends Controller
                 $image->move('img/bikes/', $imageName);
                 $path = 'img/bikes/'.$imageName;
 
-                if($key == 0){
+                if($key == 0 && $setAlsoMainImage){
                     //Add image in the database as main image
                     $bikeMedia = new BikeMedia();
                     $bikeMedia->path = $path;
@@ -155,7 +156,7 @@ class BikeController extends Controller
             $bikeToEdit->quality = $request->quality;
             $bikeToEdit->save();
 
-            return Redirect::back()->with('succesMessage','Uw fietszoekertje werd gewijzigd.');;
+            return Redirect::back()->with('succesMessage','Uw fietszoekertje werd gewijzigd.');
 
         }
         else
@@ -182,7 +183,20 @@ class BikeController extends Controller
         return redirect('/myBikes');
     }
 
-    public function addBikeMedia($bike_id){
+    public function addBikeMedia(Request $request, $bike_id){
+        $setAlsoMainImage = False;
+        $validator = Validator::make($request->all(), [
+            'images' => 'required',
+            ]);
+
+        if ($validator->passes()){
+            $images = $request->images;
+            $this->storeNewBikeMedia($images, $bike_id, $setAlsoMainImage);
+            return Redirect::back()->with('succesMessage','Uw fietszoekertje werd gewijzigd.');
+        }
+        else{
+            return Redirect::back()->withErrors($validator);
+        }
         
     }
 
@@ -199,6 +213,28 @@ class BikeController extends Controller
         $bikeMedia->deleteABikeMedia($bikeMedia_id);
         unlink($filePath);     
         
+        return Redirect::back();
+    }
+
+    public function setAsMainImage($bikeMedia_id){
+        $bikeMedia = new BikeMedia();
+        $bikeMediaToEdit = $bikeMedia::find($bikeMedia_id);
+        $bike_id = $bikeMediaToEdit->bike_id;
+        $allBikeMedia = $bikeMedia->getBikeMediaWithBikeId($bike_id);
+        foreach ($allBikeMedia as $key => $media) {
+            if ($media->isMainImage){
+                $bikeMediaToReset_id = $media->bikeMedia_id;
+                $bikeMedia = new BikeMedia();
+                $bikeMediaToReset = $bikeMedia::find($bikeMediaToReset_id);
+                $bikeMediaToReset->isMainImage = False;
+                $bikeMediaToReset->save();
+            }
+        }
+
+        $bikeMediaToEdit->isMainImage = True;
+        $bikeMediaNotToReset_id = $bikeMediaToEdit->bikeMedia_id;
+        $bikeMediaToEdit->save();
+
         return Redirect::back();
     }
 }

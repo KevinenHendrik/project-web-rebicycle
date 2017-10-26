@@ -31,7 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/editMyBike/{id}','BikeController@editMyBike');
 	Route::get('/deleteMyBike/{id}','BikeController@deleteMyBike');
 	Route::get('/deleteBikeMedia/{id}','BikeController@deleteBikeMedia');
-	Route::get('/addBikeMedia/{id}','BikeController@addBikeMedia');
+	Route::post('/addBikeMedia/{id}','BikeController@addBikeMedia');
+	Route::get('/setAsMainImage/{id}','BikeController@setAsMainImage');
 
 
 
