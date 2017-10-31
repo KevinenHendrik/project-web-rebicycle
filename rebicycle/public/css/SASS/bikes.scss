@@ -2,8 +2,10 @@
     background-color: white;
     height: 100%;
     img{
+        margin-top: 16px;
         width: 100%;
-        margin-top: 12px;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 200px, 0% 200px);
+        
     }
 
     h3{

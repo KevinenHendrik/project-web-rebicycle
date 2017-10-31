@@ -42,11 +42,11 @@
         <a href="/bike">
         <div class="bikeSale col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <img src="{{ asset('img/bikes/derek-thomson-271991.jpg') }}">
-                <div class="bikeSaleLeft col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                <div class="bikeSaleLeft col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
                     <li><h3>Thompson adventure</h3></li>
                     <li><span><i class="fal fa-euro-sign"></i> 360</span></li>
                 </div>
-                <div class="bikeSaleRight col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <div class="bikeSaleRight col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                     <ul>
                         <li><i class="fas fa-heart fa-2x"></i></li>
                         <li><i class="fal fa-shopping-cart fa-2x"></i></li>
@@ -57,11 +57,11 @@
     <a href="/bike">
     <div class="bikeSale col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <img src="{{ asset('img/bikes/william-hook-58602.jpg') }}">
-            <div class="bikeSaleLeft col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+            <div class="bikeSaleLeft col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
                 <li><h3>Trek G-70</h3></li>
                 <li><span><i class="fal fa-euro-sign"></i> 200</span></li>
             </div>
-            <div class="bikeSaleRight col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+            <div class="bikeSaleRight col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <ul>
                     <li><i class="fas fa-heart fa-2x"></i></li>
                     <li><i class="fal fa-shopping-cart fa-2x"></i></li>
