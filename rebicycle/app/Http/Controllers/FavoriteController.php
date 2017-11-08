@@ -21,26 +21,39 @@ class FavoriteController extends Controller
             ]);
     }
 
-	public function toggleFavorite($bike_id){
-		$favorite = new Favorite();
-		$user_id = Auth::id();
+	public function favoriseBike($bike_id){
+       
+        $favorite = new Favorite();
+        $user_id = Auth::id();
 
-		//Check if Favorite already exists
+        //Check if Favorite already exists
 		$favoriteToCheck = $favorite->getFavorite($bike_id, $user_id);
-
-		if (!$favoriteToCheck->isEmpty()){
-			//remove Bike from favorite
-			$favorite->deleteAFavorite($bike_id, $user_id);
-		} else{
-			//add Bike to favorite
+        
+        if($voteToCheck->isEmpty()){
+            //add Bike to favorite
 			$favorite->bike_id = $bike_id;
 			$favorite->user_id = $user_id;
 			$favorite->save();
-		}
+        }
 
-	return Redirect::back();
+        return Redirect::back();
+    }
 
-	}
+    public function unfavoriseBike($picture_id){
+
+        $favorite = new Favorite();
+        $user_id = Auth::id();
+
+        //Check if Favorite already exists
+		$favoriteToCheck = $favorite->getFavorite($bike_id, $user_id);
+
+        if (!$favoriteToCheck->isEmpty()){
+			//remove Bike from favorite
+			$favorite->deleteAFavorite($bike_id, $user_id);
+		}   
+        
+        return Redirect::back();
+    }
 
 
 }

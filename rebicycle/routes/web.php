@@ -34,7 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/addBikeMedia/{id}','BikeController@addBikeMedia');
 	Route::get('/setAsMainImage/{id}','BikeController@setAsMainImage');
 	Route::get('/favoriteBikes', 'FavoriteController@showAllFavoriteBikes');
-	Route::get('/toggleFavorite/{id}','FavoriteController@toggleFavorite');
+	Route::get('/favoriseBike/{id}','FavoriteController@favoriseBike');
+	Route::get('/unfavoriseBike/{id}','FavoriteController@unfavoriseBike');
 
 
 
