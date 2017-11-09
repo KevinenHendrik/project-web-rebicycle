@@ -335,40 +335,61 @@ class BikeController extends Controller
                 $bike_idsInShoppingBasket = array_add($bike_idsInShoppingBasket,'bike_id_'.$bike_id,$bike_id);
                 $request->session()->put('bike_idsInShoppingBasket', $bike_idsInShoppingBasket);
 
-                return $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
+                return Redirect::back();
             } else{
                 $bike_idsInShoppingBasket = [
                     'bike_id_'.$bike_id => $bike_id
                 ];
 
                 $request->session()->put('bike_idsInShoppingBasket', $bike_idsInShoppingBasket);
-                return $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
+                return Redirect::back();
 
             }
         }       
         
     }
 
+    //function to remove a bike from a buyers shoppingbasket
     public function removeBikeFromShoppingBasket($bike_id, Request $request){
-        $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
-        if (array_key_exists('bike_id_'.$bike_id, $bike_idsInShoppingBasket)){
-            $bike_idsInNewShoppingBasket = array_except($bike_idsInShoppingBasket,'bike_id_'.$bike_id);
-            $request->session()->put('bike_idsInShoppingBasket', $bike_idsInNewShoppingBasket);
-            return $this->getBikesFromShoppingBasket($bike_idsInNewShoppingBasket);
+
+        if ($request->session()->exists('bike_idsInShoppingBasket')) {
+            $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
+            if (array_key_exists('bike_id_'.$bike_id, $bike_idsInShoppingBasket)){
+                $bike_idsInNewShoppingBasket = array_except($bike_idsInShoppingBasket,'bike_id_'.$bike_id);
+                $request->session()->put('bike_idsInShoppingBasket', $bike_idsInNewShoppingBasket);
+                return Redirect::back();
+            }        
         } else{
             return Redirect::back();
         }
     }
 
+    //This function will get every bike from the database that are in the shoppingbasket
     public function getBikesFromShoppingBasket($bike_idsInShoppingBasket){
         $bike = new Bike();        
         $bikesInShoppingBasket = array();
 
         foreach ($bike_idsInShoppingBasket as $key => $value) {
-            $bikeToPutInArray = $bike->getABike($value);
+            $bikeToPutInArray = $bike->getABike($value)->first();
             array_push($bikesInShoppingBasket,$bikeToPutInArray);
         }
 
         return $bikesInShoppingBasket;
+    }
+
+    //function to open the ShoppingBasket page
+    public function openShoppingBasket(Request $request){
+        if ($request->session()->has('bike_idsInShoppingBasket')) {
+            $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
+            $bikesFromShoppingBasket = $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
+
+            return view('pages/shoppingBasket',
+            [
+            'bikesFromShoppingBasket' => $bikesFromShoppingBasket,
+            ]);
+
+        } else{
+            return Redirect::back();
+        }
     }
 }

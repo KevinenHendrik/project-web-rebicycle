@@ -27,6 +27,7 @@ Route::get('/checkIfSellerhasAnAccount','BikeController@checkIfSellerhasAnAccoun
 
 Route::get('/addBikeToShoppingBasket/{id}','BikeController@addBikeToShoppingBasket');
 Route::get('/removeBikeFromShoppingBasket/{id}','BikeController@removeBikeFromShoppingBasket');
+Route::get('/openShoppingBasket','BikeController@openShoppingBasket');
 
 //Routes when user is authenticated
 Route::group(['middleware' => 'auth'], function () {
