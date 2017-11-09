@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Registreren</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -103,10 +103,38 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('idCardNumber') ? ' has-error' : '' }}">
+                            <label for="bankaccount" class="col-md-4 control-label">Rijksregisternummer*</label>
+
+                            <div class="col-md-6">
+                                <input id="idCardNumber" type="text" class="form-control" name="idCardNumber" value="{{ old('idCardNumber') }}" required>
+
+                                @if ($errors->has('idCardNumber'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('idCardNumber') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('bankaccount') ? ' has-error' : '' }}">
+                            <label for="bankaccount" class="col-md-4 control-label">Rekeningnummer (IBAN)*</label>
+
+                            <div class="col-md-6">
+                                <input id="bankaccount" type="text" class="form-control" name="bankaccount" value="{{ old('bankaccount') }}" required>
+
+                                @if ($errors->has('bankaccount'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('bankaccount') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Registreren
                                 </button>
                             </div>
                         </div>

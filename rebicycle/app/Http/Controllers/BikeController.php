@@ -18,10 +18,10 @@ class BikeController extends Controller
     public function postBikeData(Request $request){
 
         $validator = Validator::make($request->all(), [
-          'brand' => 'required',
-          'model' => 'required',
+          'brand' => 'required|string',
+          'model' => 'required|string',
           'category' => 'required',
-          'sellingPrice' => 'required',
+          'sellingPrice' => 'required|numeric|min:0',
           'description' => 'required',
           'quality' => 'required',
           'images.*' => 'required|image'
@@ -159,6 +159,7 @@ class BikeController extends Controller
         
     }
 
+    //Function to show all bikes
     public function showAllBikes(){
         $bike = new Bike();
         $allBikes = $bike->getAllBikes();
@@ -168,6 +169,7 @@ class BikeController extends Controller
             ]);
     }
 
+    //Function to open a bikepage
     public function openABike($bike_id){
         $bike = new Bike();
         $bikeToShow = $bike->getABike($bike_id)->first();
@@ -182,6 +184,7 @@ class BikeController extends Controller
             ]);
     }
 
+    //function to show all Bikes that I'm selling
     public function showMyBikes(){
     	$bike = new Bike();
     	$owner_id = Auth::id();
@@ -192,6 +195,7 @@ class BikeController extends Controller
             ]);
     }
 
+    //Function to open the edit page of a bike
     public function openEditMyBike($bike_id){
     	$bike = new Bike();
     	$bikeMedia = new BikeMedia();
@@ -205,14 +209,15 @@ class BikeController extends Controller
     		]);
     }
     
+    //Function to edit my chosen bike
     public function editMyBike(Request $request, $bike_id){
         $bike = new Bike();
 
          $validator = Validator::make($request->all(), [
-          'brand' => 'required',
-          'model' => 'required',
+          'brand' => 'required|string',
+          'model' => 'required|string',
           'category' => 'required',
-          'sellingPrice' => 'required',
+          'sellingPrice' => 'required|numeric|min:0',
           'description' => 'required',
           'quality' => 'required'
         ]);
@@ -237,6 +242,7 @@ class BikeController extends Controller
 
     }
 
+    //function to delete one of my bikes
     public function deleteMyBike($bike_id){
         $bike = new Bike();
         $bikeMedia = new BikeMedia();
@@ -253,6 +259,7 @@ class BikeController extends Controller
         return redirect('/myBikes');
     }
 
+    //function to add an image to a bike that already exists
     public function addBikeMedia(Request $request, $bike_id){
         
         $validator = Validator::make($request->all(), [
@@ -274,6 +281,7 @@ class BikeController extends Controller
         
     }
 
+    //Function to delete an image from a bike
     public function deleteBikeMedia($bikeMedia_id){
 
         $bikeMedia = new bikeMedia();
@@ -290,6 +298,7 @@ class BikeController extends Controller
         return Redirect::back();
     }
 
+    //function to set a bike's image as main image
     public function setAsMainImage($bikeMedia_id){
         $bikeMedia = new BikeMedia();
         $bikeMediaToEdit = $bikeMedia::find($bikeMedia_id);
@@ -310,5 +319,56 @@ class BikeController extends Controller
         $bikeMediaToEdit->save();
 
         return Redirect::back();
+    }
+
+    //function to add a bike to a buyers shoppingbasket
+    public function addBikeToShoppingBasket($bike_id, Request $request){
+        $bike = new Bike();
+        $bikeToCheck = $bike->getABike($bike_id);
+
+        if($bikeToCheck->isEmpty()){
+            return Redirect::back();
+        } else{
+            if ($request->session()->exists('bike_idsInShoppingBasket')) {
+
+                $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
+                $bike_idsInShoppingBasket = array_add($bike_idsInShoppingBasket,'bike_id_'.$bike_id,$bike_id);
+                $request->session()->put('bike_idsInShoppingBasket', $bike_idsInShoppingBasket);
+
+                return $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
+            } else{
+                $bike_idsInShoppingBasket = [
+                    'bike_id_'.$bike_id => $bike_id
+                ];
+
+                $request->session()->put('bike_idsInShoppingBasket', $bike_idsInShoppingBasket);
+                return $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
+
+            }
+        }       
+        
+    }
+
+    public function removeBikeFromShoppingBasket($bike_id, Request $request){
+        $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
+        if (array_key_exists('bike_id_'.$bike_id, $bike_idsInShoppingBasket)){
+            $bike_idsInNewShoppingBasket = array_except($bike_idsInShoppingBasket,'bike_id_'.$bike_id);
+            $request->session()->put('bike_idsInShoppingBasket', $bike_idsInNewShoppingBasket);
+            return $this->getBikesFromShoppingBasket($bike_idsInNewShoppingBasket);
+        } else{
+            return Redirect::back();
+        }
+    }
+
+    public function getBikesFromShoppingBasket($bike_idsInShoppingBasket){
+        $bike = new Bike();        
+        $bikesInShoppingBasket = array();
+
+        foreach ($bike_idsInShoppingBasket as $key => $value) {
+            $bikeToPutInArray = $bike->getABike($value);
+            array_push($bikesInShoppingBasket,$bikeToPutInArray);
+        }
+
+        return $bikesInShoppingBasket;
     }
 }

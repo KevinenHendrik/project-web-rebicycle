@@ -55,6 +55,8 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'adres' => 'required|string',
             'woonplaats' => 'required|string',
+            'idCardNumber' => 'required|string',
+            'bankaccount' => 'required|string',
         ]);
     }
 
@@ -78,6 +80,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'adres' => $data['adres'].','.$data['woonplaats'],
+            'idCardNumber' => $data['idCardNumber'],
+            'bankaccount' => $data['bankaccount'],
             'role' => 'user',
         ]);
     }
