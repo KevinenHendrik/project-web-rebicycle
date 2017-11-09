@@ -27,7 +27,7 @@ Route::get('/checkIfSellerhasAnAccount','BikeController@checkIfSellerhasAnAccoun
 
 Route::get('/addBikeToShoppingBasket/{id}','BikeController@addBikeToShoppingBasket');
 Route::get('/removeBikeFromShoppingBasket/{id}','BikeController@removeBikeFromShoppingBasket');
-Route::get('/openShoppingBasket','BikeController@openShoppingBasket');
+
 
 //Routes when user is authenticated
 Route::group(['middleware' => 'auth'], function () {
@@ -45,8 +45,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/favoriseBike/{id}','FavoriteController@favoriseBike');
 	Route::get('/unfavoriseBike/{id}','FavoriteController@unfavoriseBike');
 
-
-
+	Route::get('/openShoppingBasket','BikeController@openShoppingBasket');
+	Route::post('/buy','BikeController@buyBikes');
 
 });
 
