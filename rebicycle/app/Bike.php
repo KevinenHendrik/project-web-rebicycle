@@ -52,4 +52,7 @@ class Bike extends Model
         return $this->hasMany('App\Favorite','favorite_id');
     }
 
+    public function getTotalPriceAttribute() {
+        return $this->quantity * $this->sellingPrice;
+    }
 }

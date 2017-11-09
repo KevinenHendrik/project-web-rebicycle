@@ -48,6 +48,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/openShoppingBasket','BikeController@openShoppingBasket');
 	Route::post('/buy','BikeController@buyBikes');
 
+	Route::get('/myOrders', 'OrderController@openMyOrders');
+
+	Route::get('/openEditUser/','UserController@openEditUser');
+	Route::post('/editUser/','UserController@editUser');
+	Route::post('/editPasswordUser/','UserController@editPasswordUser');
+
 });
 
 

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use \App\Bike;
 use App\BikeMedia;
 use App\Favorite;
-use App\Demand;
+use App\Order;
 use Carbon\Carbon;
 use Validator;
 use Auth;
@@ -327,9 +327,7 @@ class BikeController extends Controller
         $bike = new Bike();
         $bikeToCheck = $bike->getABike($bike_id);
 
-        if($bikeToCheck->isEmpty()){
-            return Redirect::back();
-        } else{
+        if(!$bikeToCheck->isEmpty() && $bikeToCheck->first()->status == 'for sale'){
             if ($request->session()->exists('bike_idsInShoppingBasket')) {
 
                 $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
@@ -346,6 +344,9 @@ class BikeController extends Controller
                 return Redirect::back();
 
             }
+        } else{
+            return Redirect::back();
+
         }       
         
     }
@@ -384,9 +385,15 @@ class BikeController extends Controller
             $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
             $bikesFromShoppingBasket = $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
 
+            $totalPrice = 0;
+            foreach ($bikesFromShoppingBasket as $key => $bike) {
+                $totalPrice = $totalPrice + $bike->sellingPrice;
+            }
+
             return view('pages/shoppingBasket',
             [
             'bikesFromShoppingBasket' => $bikesFromShoppingBasket,
+            'totalPrice' => $totalPrice,
             ]);
 
         } else{
@@ -407,12 +414,12 @@ class BikeController extends Controller
                 $bikesFromShoppingBasket = $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
 
                 foreach ($bikesFromShoppingBasket as $key => $bikeFromShoppingBasket) {
-                    $demand = new Demand;
-                    $demand->buyer_id = Auth::id();
-                    $demand->bike_id = $bikeFromShoppingBasket->bike_id;
-                    $demand->minimumQuality = $request->quality;
-                    $demand->status = "Waiting for actual quality";
-                    $demand->save();
+                    $order = new Order;
+                    $order->buyer_id = Auth::id();
+                    $order->bike_id = $bikeFromShoppingBasket->bike_id;
+                    $order->minimumQuality = $request->quality;
+                    $order->status = "Waiting for actual quality";
+                    $order->save();
 
                     $bike = new Bike;                    
                     $bikeToEdit = $bike::find($bikeFromShoppingBasket->bike_id);
