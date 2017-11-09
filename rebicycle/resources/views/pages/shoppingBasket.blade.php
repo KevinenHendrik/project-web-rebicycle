@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <h3>Winkelmandje</h3>
-    <div class="bicycles">
+    <div class="bicycles row">
         @foreach($bikesFromShoppingBasket as $key => $bike)
         <a href="/bike/{{ $bike->bike_id }}">
         <div class="bikeSale col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
@@ -20,7 +20,45 @@
         </div>
         </a>
         @endforeach
-        <a class="btn btn-primary" href="/buy">Verder naar bestellen</a>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Wordt geleverd naar</h3>
+            <p>{{ Auth::user()->adres }}</p>
+        </div>
+        <div class="col-md-8">
+            <h3>Bestelling</h3>
+                
+            <form class="form-horizontal" method="POST" action="/buy">
+                {{ csrf_field() }}
+                <div class="form-group{{ $errors->has('quality') ? ' has-error' : '' }}">
+                    <label for="quality" class="col-md-4 control-label">Kies een minimum kwailiteitscore voor uw fietsen*</label>
+
+                    <div class="col-md-3">
+                        <select id="quality"  class="form-control" name="quality" value="{{ old('quality') }}" required>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+
+                        @if ($errors->has('quality'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('quality') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-4">
+                    <h4>Totale kostprijs:</h4>
+                </div>
+                <div class="form-group ">
+                        <button type="submit" class="btn btn-primary">
+                            Bestelling plaatsen
+                        </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 @endsection

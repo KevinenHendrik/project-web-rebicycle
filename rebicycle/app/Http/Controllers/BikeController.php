@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Bike;
 use App\BikeMedia;
 use App\Favorite;
+use App\Demand;
 use Carbon\Carbon;
 use Validator;
 use Auth;
@@ -391,5 +392,36 @@ class BikeController extends Controller
         } else{
             return Redirect::back();
         }
+    }
+
+    public function buyBikes(Request $request){
+        
+
+        $validator = Validator::make($request->all(), [
+          'quality' => 'required|numeric',
+        ]);
+
+        if($validator->passes()){
+            if ($request->session()->has('bike_idsInShoppingBasket')) {
+                $bike_idsInShoppingBasket = $request->session()->pull('bike_idsInShoppingBasket');
+                $bikesFromShoppingBasket = $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
+
+                foreach ($bikesFromShoppingBasket as $key => $bikeFromShoppingBasket) {
+                    $demand = new Demand;
+                    $demand->buyer_id = Auth::id();
+                    $demand->bike_id = $bikeFromShoppingBasket->bike_id;
+                    $demand->minimumQuality = $request->quality;
+                    $demand->status = "Waiting for actual quality";
+                    $demand->save();
+
+                    $bike = new Bike;                    
+                    $bikeToEdit = $bike::find($bikeFromShoppingBasket->bike_id);
+                    $bikeToEdit->status = 'sold';
+                    $bikeToEdit->save();
+                }
+                return redirect('/');
+            }
+        }
+        return Redirect::back();
     }
 }

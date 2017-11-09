@@ -14,6 +14,7 @@ class Bike extends Model
             ->join('bikeMedia','bikeMedia.bike_id','=','bikes.bike_id')
             ->where([
             ['bikeMedia.isMainImage','=', True],
+            ['bikes.status','=', 'for sale'],
             ])
             ->select('bikes.*','bikeMedia.path as mediaPath')
             ->get();
