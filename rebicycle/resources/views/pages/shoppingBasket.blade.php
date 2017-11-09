@@ -20,6 +20,7 @@
         </div>
         </a>
         @endforeach
+        <a class="btn btn-primary" href="/buy">Verder naar bestellen</a>
     </div>
 </div>
 @endsection
