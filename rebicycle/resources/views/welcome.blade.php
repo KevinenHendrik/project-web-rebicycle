@@ -14,9 +14,7 @@
                     <a href="/bikes"><button type="button" class="btn btn-outline-primary btn-lg">Kopen</button></a>
                 </div>
         </div>
-        <a href="#" id="scrollDown">
-        <i class="fal fa-chevron-double-down fa-2x"></i>
-        </a>
+        <i class="fal fa-chevron-double-down fa-2x" onclick="scrollDown()"></i>
     </div>
 </div>
 <div class="container-fluid">

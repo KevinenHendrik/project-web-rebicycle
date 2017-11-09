@@ -34,8 +34,6 @@ slider.oninput = function() {
     output.innerHTML = this.value;
 } 
 
-$("#scrollDown").click(function() {
-    $('html,body').animate({
-        scrollTop: $(".second").offset().top},
-        'slow');
-});
+function scrollDown(){
+    window.scrollTo(0,window.innerHeight-50);
+}
