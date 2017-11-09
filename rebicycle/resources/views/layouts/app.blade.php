@@ -84,7 +84,7 @@
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a class="btn" href="../myBikes">Mijn fietsen</a></li>                                </li>
-                                    <li><a class="btn disabled" href="#">Favorieten</a></li>
+                                    <li><a class="btn" href="/favoriteBikes">Favorieten</a></li>
                                     <li>
                                         <a class="btn" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

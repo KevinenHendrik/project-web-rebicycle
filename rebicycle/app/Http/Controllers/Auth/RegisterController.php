@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -65,6 +66,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if(Session::has('nextPageLink')){
+            $nextPageLink = Session::pull('nextPageLink');
+            Session::put('nextPageLink','/');
+            $this->redirectTo = $nextPageLink;
+        }
+
         return User::create([
             'firstName' => $data['firstName'],
             'name' => $data['name'],

@@ -45,5 +45,8 @@ class Bike extends Model
         ->delete();
     }
 
+    public function favorites(){
+        return $this->hasMany('App\Favorite','favorite_id');
+    }
 
 }

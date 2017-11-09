@@ -117,8 +117,9 @@
                                     <p>Ingesteld als hoofdafbeelding</p>
                                 @else
                                     <a href="/setAsMainImage/{{$image->bikeMedia_id}}">Instellen als hoofdafbeelding</a>
+                                    <a href="/deleteBikeMedia/{{$image->bikeMedia_id}}">Verwijderen</a>
                                 @endif
-                                <a href="/deleteBikeMedia/{{$image->bikeMedia_id}}">Verwijderen</a>
+                                
                             </div>                            
                         @endforeach
                     </div>

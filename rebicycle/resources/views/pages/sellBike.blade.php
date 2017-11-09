@@ -4,7 +4,7 @@
         <div class="flex-center position-ref full-height">
             <div class="sellBike">
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/storeNewBike" >
+                    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/postBikeData" >
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('brand') ? ' has-error' : '' }}">

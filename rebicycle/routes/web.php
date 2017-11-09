@@ -22,17 +22,21 @@ Route::get('/sellBike', function () {
 });
 
 Route::get('/bikes', 'BikeController@showAllBikes');
+Route::post('/postBikeData','BikeController@postBikeData');
+Route::get('/checkIfSellerhasAnAccount','BikeController@checkIfSellerhasAnAccount');
 
+//Routes when user is authenticated
 Route::group(['middleware' => 'auth'], function () {
-	//Routes when user is authenticated
-	Route::post('/storeNewBike','BikeController@storeNewBike');
+	
 	Route::get('/myBikes', 'BikeController@showMyBikes');
+
 	Route::get('/editMyBike/{id}','BikeController@openEditMyBike');
 	Route::post('/editMyBike/{id}','BikeController@editMyBike');
 	Route::get('/deleteMyBike/{id}','BikeController@deleteMyBike');
 	Route::get('/deleteBikeMedia/{id}','BikeController@deleteBikeMedia');
 	Route::post('/addBikeMedia/{id}','BikeController@addBikeMedia');
 	Route::get('/setAsMainImage/{id}','BikeController@setAsMainImage');
+
 	Route::get('/favoriteBikes', 'FavoriteController@showAllFavoriteBikes');
 	Route::get('/favoriseBike/{id}','FavoriteController@favoriseBike');
 	Route::get('/unfavoriseBike/{id}','FavoriteController@unfavoriseBike');
