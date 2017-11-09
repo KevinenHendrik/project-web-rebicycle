@@ -24,7 +24,8 @@ class BikeController extends Controller
           'sellingPrice' => 'required',
           'description' => 'required',
           'quality' => 'required',
-          'images' => 'required'
+          'images.*' => 'required|image'
+
         ]);
 
         if ($validator->passes()){
@@ -114,7 +115,7 @@ class BikeController extends Controller
                     $bikeMedia->path = $imagePath;
                     $bikeMedia->bike_id = $bike_id;
                     $bikeMedia->isMainImage = False;
-                    $bikeMedia->save();
+                    $bikeMedia->save();                    
                 }
             }else{
                 //User is logged in, so we move the images from temporaryfolder to the new folder 
@@ -149,18 +150,8 @@ class BikeController extends Controller
             $currentTime = Carbon::now()->timestamp; //Gives the datetime of this moment in a timestamp
             $newTemporaryPath = 'img/temporaryBikes/'.$currentTime.'-'.str_random(5).'/';
 
-            foreach ($images as $key =>  $image) {
-                $regels = array('image' => 'required|image');//|mimes:jpeg,bmp,png,gif,jpg,svg'
-                $validator = Validator::make(array('image'=> $image), $regels);
-
-                if($validator->passes()){  
-
-                    $image->move($newTemporaryPath, $image->getClientOriginalName());
-
-                } else{
-                    return Redirect::back()->withErrors($validator);
-                }
-            
+            foreach ($images as $key =>  $image) {       
+                $image->move($newTemporaryPath, $image->getClientOriginalName());
             }
             return $newTemporaryPath;
         }
@@ -265,7 +256,7 @@ class BikeController extends Controller
     public function addBikeMedia(Request $request, $bike_id){
         
         $validator = Validator::make($request->all(), [
-            'images' => 'required',
+            'images.*' => 'required|image',
             ]);
 
         if ($validator->passes()){

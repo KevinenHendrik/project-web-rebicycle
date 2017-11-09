@@ -132,9 +132,9 @@
                             <label for="images" class="col-md-4 control-label">Voeg één of meerdere afbeeldingen toe*</label>
                             <div class="col-md-6">
                                 <input type="file" name="images[]" multiple="true" /><br/>
-                                @if ($errors->has('images'))
+                                @if ($errors->has('images.*'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('images') }}</strong>
+                                        <strong>Gelieve geldige afbeeldingen up te loaden.</strong>
                                     </span>
                                 @endif
                             </div>
