@@ -6,29 +6,32 @@
   .bikeSale img {
     margin-top: 16px;
     width: 100%;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 200px, 0% 200px); }
+    clip-path: polygon(0% 0%, 100% 0%, 100% 250px, 0% 250px); }
   .bikeSale h3 {
     margin: 0 !important;
     padding: 0 !important; }
-  .bikeSale .bikeSaleRight {
-    text-align: right;
-    margin-right: 0;
-    padding-right: 0;
-    margin-top: 5px; }
-    .bikeSale .bikeSaleRight .fa-heart {
-      color: rgba(255, 0, 0, 0.3); }
-      .bikeSale .bikeSaleRight .fa-heart:hover {
-        color: red; }
-    .bikeSale .bikeSaleRight li:first-child {
-      margin-bottom: 10px; }
-  .bikeSale .bikeSaleLeft {
-    margin-left: 0;
-    padding-left: 0;
-    margin-top: 5px; }
-    .bikeSale .bikeSaleLeft li:first-child {
-      margin-bottom: 10px; }
-  .bikeSale li {
-    list-style-type: none; }
+  .bikeSale .bike-info {
+    top: 60% x; }
+    .bikeSale .bike-info .bikeSaleRight {
+      text-align: right;
+      float: right;
+      margin-right: 0;
+      padding-right: 0;
+      margin-top: 5px; }
+      .bikeSale .bike-info .bikeSaleRight .fa-heart {
+        color: rgba(255, 0, 0, 0.3); }
+        .bikeSale .bike-info .bikeSaleRight .fa-heart:hover {
+          color: red; }
+      .bikeSale .bike-info .bikeSaleRight li:first-child {
+        margin-bottom: 10px; }
+    .bikeSale .bike-info .bikeSaleLeft {
+      margin-left: 0;
+      padding-left: 0;
+      margin-top: 5px; }
+      .bikeSale .bike-info .bikeSaleLeft li:first-child {
+        margin-bottom: 10px; }
+    .bikeSale .bike-info li {
+      list-style-type: none; }
 
 .bicycle-single img {
   width: 100%; }
@@ -149,7 +152,6 @@
   color: white;
   margin-bottom: 0;
   bottom: 0;
-  position: fixed;
   overflow: hidden; }
   .footer .container {
     background-color: rgba(53, 53, 156, 0.3);
@@ -282,7 +284,8 @@ h1, h2, h3, h4, h5, h6, p, a {
   position: fixed;
   top: 0;
   z-index: 888;
-  width: 100%; }
+  width: 100%;
+  color: black; }
 
 .navbar-me {
   transition: all 1s; }
@@ -305,9 +308,6 @@ h1, h2, h3, h4, h5, h6, p, a {
 
 .menu-collapsed-button {
   margin: 20px 15px 10px 15px !important; }
-
-.fixed-me {
-  color: black; }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
   background-color: white;

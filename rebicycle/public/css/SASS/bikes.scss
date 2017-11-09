@@ -4,44 +4,46 @@
     img{
         margin-top: 16px;
         width: 100%;
-        clip-path: polygon(0% 0%, 100% 0%, 100% 200px, 0% 200px);
-        
+        clip-path: polygon(0% 0%, 100% 0%, 100% 250px, 0% 250px);
     }
 
     h3{
         margin: 0 !important;
         padding: 0 !important;
     }
+    .bike-info{
+        top: 60%x;
+        .bikeSaleRight{
+            text-align: right;
+            float: right;
+            margin-right: 0;
+            padding-right: 0;
+            margin-top: 5px;
 
-    .bikeSaleRight{
-        text-align: right;
-        margin-right: 0;
-        padding-right: 0;
-        margin-top: 5px;
+            .fa-heart{
+                color:rgba(255,0,0,.3);
+                &:hover{
+                    color:red;
+                }   
+            }
 
-        .fa-heart{
-            color:rgba(255,0,0,.3);
-            &:hover{
-                color:red;
-            }   
+            li:first-child{
+                margin-bottom: 10px;
+            }
         }
 
-        li:first-child{
-            margin-bottom: 10px;
-        }
-    }
+        .bikeSaleLeft{
+            margin-left: 0;
+            padding-left: 0;
+            margin-top: 5px;
 
-    .bikeSaleLeft{
-        margin-left: 0;
-        padding-left: 0;
-        margin-top: 5px;
-
-        li:first-child{
-            margin-bottom: 10px;
+            li:first-child{
+                margin-bottom: 10px;
+            }
         }
-    }
-    li {
-        list-style-type: none;
+        li {
+            list-style-type: none;
+        }
     }
 }
 

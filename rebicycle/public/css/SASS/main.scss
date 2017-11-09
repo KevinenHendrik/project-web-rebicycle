@@ -142,8 +142,6 @@ h1,h2,h3,h4,h5,h6,p,a {
         padding-top: 5em;
     }    
 }
-.navbar-inverse .navbar-collapse{
-}
 
 .fixed-me{
     transition: all 1s ;
@@ -157,6 +155,7 @@ h1,h2,h3,h4,h5,h6,p,a {
     top:0;
 	z-index:888;
     width: 100%;
+    color: black;
 }
 
 .navbar-me {
@@ -182,14 +181,6 @@ h1,h2,h3,h4,h5,h6,p,a {
 }
 .menu-collapsed-button{
     margin: 20px 15px 10px 15px !important;
-}
-
-.navbar-inverse .navbar-toggle{
-    // background-color: black;
-}
-
-.fixed-me{
-    color: black;
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
