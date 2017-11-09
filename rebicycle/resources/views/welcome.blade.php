@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-</div>
 <div class="intro">
     <div class="hero-image">
         <div class="title col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -17,41 +16,41 @@
         <i class="fal fa-chevron-double-down fa-2x" onclick="scrollDown()"></i>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
-                <i class="fal fa-truck fa-4x" data-fa-transform="flip-h"></i>
-            </div>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                <i class="fal fa-list-alt fa-4x"></i>
-            </div>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-            </div>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                <i class="fal fa-dollar-sign fa-4x"></i>
-            </div>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                <i class="fal fa-truck fa-4x" data-fa-transform="flip-h"></i>
-            </div>
+<div class="container">
+    <div class="steps">
+        <div class="row">
+        <div class="col-sm-15 col-md-15">
+            <i class="fal fa-truck fa-4x" data-fa-transform="flip-h"></i>
+            <p>De fiets wordt bij de verkoper door ons opgehaald.</p>
         </div>
-    <div class="block block-text col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-            <i class="fal fa-euro-sign fa-8x"></i>
+        <div class="col-sm-15 col-md-15">
+            <i class="fal fa-list-alt fa-4x"></i>
+            <p>Op onze opslagplaats volgt een controle en een opknapbeurt.</p>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-            <i class="fal fa-question-circle fa-8x"></i>
-            <h3>Voor al uw vragen kan u terecht bij onze helpdesk of FAQ.</h3>
+        <div class="col-sm-15 col-md-15">
+            <i class="fal fa-check-circle fa-4x"></i>
+            <p>De oper krijgt een certificaat dat de fiets rebicycled is.</p>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-        <i class="fal fa-bicycle fa-8x"></i>
-        <h3>Elke fiets die je koopt wordt eerst door ons gecontroleerd.</h3>
+        <div class="col-sm-15 col-md-15">
+            <i class="fal fa-usd-circle fa-4x"></i>
+            <p>De verkoper ontvangt zijn geld op een veilige manier.</p>
+        </div>
+        <div class="col-sm-15 col-md-15">
+            <i class="fal fa-truck fa-4x" data-fa-transform="flip-h"></i>
+            <p>De fiets wordt geleverd naar een plaats van keuze.</p>
+        </div>
+        </div>
+        <div class="row link">
+            <h3>Toch nog niet helemaal mee? Ontdek hier stap voor stap hoe we te werk gaan.</h3>
         </div>
     </div>
-
+</div> <!-- end container -->
+<div class="container-fluid">
     <div class="block block-image col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <h1>Voor ieder wat wils!</h1>
     </div>
-
+</div>
+<div class="container">
     <div class="bicycle-recommended block block-text col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class="bicycles">
         <h2 style="text-align:center;background-color:white;" >Misschien is dit iets voor jou?</h2>
