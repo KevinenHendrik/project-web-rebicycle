@@ -6,90 +6,160 @@ use Illuminate\Http\Request;
 use \App\Bike;
 use App\BikeMedia;
 use App\Favorite;
+use Carbon\Carbon;
 use Validator;
 use Auth;
 use Redirect;
+use File;
 
 class BikeController extends Controller
 {
-	//Fucntion that makes it possible to post a bike on the platform to sell it
-    public function storeNewBike(Request $request)
-    {
-    	$bike = new Bike();
-    	$bikeMedia = new BikeMedia();
-    	$owner_id = Auth::id();
-    	$status = 'for sale'; //sellingstatus of the bike that will be sold
-        $setAlsoMainImage = True;
+	//Fucntion that makes it possible to post a bike and not yet save it in the database
+    public function postBikeData(Request $request){
 
         $validator = Validator::make($request->all(), [
-          'brand' => 'required',
-          'model' => 'required',
+          'brand' => 'required|string',
+          'model' => 'required|string',
           'category' => 'required',
-          'sellingPrice' => 'required',
+          'sellingPrice' => 'required|numeric|min:0',
           'description' => 'required',
           'quality' => 'required',
-          'images' => 'required'
+          'images.*' => 'required|image'
+
         ]);
 
         if ($validator->passes()){
 
-            $bike->brand = $request->brand;
-            $bike->model = $request->model;
-            $bike->category = $request->category;
-            $bike->sellingPrice = $request->sellingPrice;
-            $bike->description = $request->description;
-            $bike->quality = $request->quality;
-            $bike->status = $status;
-            $bike->owner_id = $owner_id;
-            $bike->save();
-
-            $bike_id = $bike->bike_id;
+            //We will first temporary save the image before checking if User has already an account
             $images = $request->images;
-            $this->storeNewBikeMedia($images,$bike_id, $setAlsoMainImage);
-            
-            return redirect('/myBikes')->with('succesBericht', 'Uw fietszoekertje werd geplaatst');
+            $imagesAreTemporary = true;
+            $setAlsoMainImage = False;
+            $newImagesForExistingBike = False;
+            $newTemporaryPath = $this->storeNewBikeMedia($imagesAreTemporary,$images, 0, $setAlsoMainImage, $newImagesForExistingBike);
+
+            //We put all the data about the bike that the user posted in a session
+            $bikeData = [
+                'brand' => $request->brand,
+                'model' => $request->model,
+                'category' => $request->category,
+                'sellingPrice' => $request->sellingPrice,
+                'description' => $request->description,
+                'quality' => $request->quality,
+                'imagesPath' => $newTemporaryPath,
+            ];
+
+            $request->session()->put('bikeData', $bikeData);
+            return redirect('/checkIfSellerhasAnAccount');
 
         } else{
-        		return Redirect::back()->withErrors($validator);
+            return Redirect::back()->withErrors($validator);
+        }
+
+    }
+
+    public function checkIfSellerhasAnAccount(Request $request){
+
+        $bikeData = $request->session()->get('bikeData');
+
+        if(Auth::check()) {            
+            $this->storeNewBike($bikeData);
+            return redirect('/myBikes')->with('succesBericht', 'Uw fietszoekertje werd geplaatst');
+        } else{
+            $request->session()->put('nextPageLink', '/checkIfSellerhasAnAccount');
+            return redirect('/login');
+            
         }
     }
 
-    public function storeNewBikeMedia($images,$bike_id, $setAlsoMainImage){
-	
-        foreach ($images as $key =>  $image) {
-            $regels = array('image' => 'required');//|mimes:jpeg,bmp,png,gif,jpg,svg'
-            $validator = Validator::make(array('image'=> $image), $regels);
+    public function storeNewBike($bikeData)
+    {
+    	$bike = new Bike();
+        $bikeMedia = new BikeMedia();
+        $owner_id = Auth::id();
+        $status = 'for sale'; //sellingstatus of the bike that will be sold
+        $setAlsoMainImage = True;
+        $imagesAreTemporary = false;
+        $newImagesForExistingBike = False;
 
-            if($validator->passes()){  
+        $bike->brand = $bikeData['brand'];
+        $bike->model = $bikeData['model'];
+        $bike->category = $bikeData['category'];
+        $bike->sellingPrice = $bikeData['sellingPrice'];
+        $bike->description = $bikeData['description'];
+        $bike->quality = $bikeData['quality'];
+        $bike->status = $status;
+        $bike->owner_id = $owner_id;
+        $bike->save();
 
-                $imageName = 'bike-'.$bike_id.'-'.str_random(5).$image->getClientOriginalName();
-                $image->move('img/bikes/', $imageName);
-                $path = 'img/bikes/'.$imageName;
+        $bike_id = $bike->bike_id;
+        $images = File::allFiles($bikeData['imagesPath']);
 
-                if($key == 0 && $setAlsoMainImage){
-                    //Add image in the database as main image
-                    $bikeMedia = new BikeMedia();
-                    $bikeMedia->path = $path;
-                    $bikeMedia->bike_id = $bike_id;
-                    $bikeMedia->isMainImage = True;
-                    $bikeMedia->save();
+        $this->storeNewBikeMedia($imagesAreTemporary,$images,$bike_id, $setAlsoMainImage, $newImagesForExistingBike);
+        File::deleteDirectory(public_path($bikeData['imagesPath']));       
 
-                } else{
-                    //Add other image in the database
-                    $bikeMedia = new BikeMedia();
-                    $bikeMedia->path = $path;
-                    $bikeMedia->bike_id = $bike_id;
-                    $bikeMedia->isMainImage = False;
-                    $bikeMedia->save();
-                }
-
-            } else{
-            	return Redirect::back()->withErrors($validator);
-            }
-        
-        } 
     }
 
+    public function storeNewBikeMedia($imagesAreTemporary,$images,$bike_id, $setAlsoMainImage, $newImagesForExistingBike){
+	
+        if(!$imagesAreTemporary){
+            if($newImagesForExistingBike){
+                //User wants to add new images for existingbike
+                foreach ($images as $key =>  $image) {
+                    $imageName = 'bike-'.$bike_id.'-'.str_random(5).'.'.$image->getClientOriginalExtension();
+                    $newPath = 'img/bikes/';
+                    $image->move($newPath, $imageName);
+                    $imagePath = $newPath.$imageName;
+
+                    //Add other image in the database
+                    $bikeMedia = new BikeMedia();
+                    $bikeMedia->path = $imagePath;
+                    $bikeMedia->bike_id = $bike_id;
+                    $bikeMedia->isMainImage = False;
+                    $bikeMedia->save();                    
+                }
+            }else{
+                //User is logged in, so we move the images from temporaryfolder to the new folder 
+                foreach ($images as $key =>  $imagePath) {
+                    $image = File::get($imagePath);
+                    $imageExtension = File::extension($imagePath);
+                    $imageName = 'bike-'.$bike_id.'-'.str_random(5).'.'.$imageExtension;
+                    $newPath = 'img/bikes/'.$imageName;
+                    File::move($imagePath,$newPath);
+
+                    if($key == 0 && $setAlsoMainImage){
+                        //Add image in the database as main image
+                        $bikeMedia = new BikeMedia();
+                        $bikeMedia->path = $newPath;
+                        $bikeMedia->bike_id = $bike_id;
+                        $bikeMedia->isMainImage = True;
+                        $bikeMedia->save();
+
+                    } else{
+                        //Add other image in the database
+                        $bikeMedia = new BikeMedia();
+                        $bikeMedia->path = $newPath;
+                        $bikeMedia->bike_id = $bike_id;
+                        $bikeMedia->isMainImage = False;
+                        $bikeMedia->save();
+                    }
+                }
+            }
+        } else{
+
+            //We move the images in a temporary folder, before we check if the user is logged in
+            $currentTime = Carbon::now()->timestamp; //Gives the datetime of this moment in a timestamp
+            $newTemporaryPath = 'img/temporaryBikes/'.$currentTime.'-'.str_random(5).'/';
+
+            foreach ($images as $key =>  $image) {       
+                $image->move($newTemporaryPath, $image->getClientOriginalName());
+            }
+            return $newTemporaryPath;
+        }
+
+        
+    }
+
+    //Function to show all bikes
     public function showAllBikes(){
         $bike = new Bike();
         $allBikes = $bike->getAllBikes();
@@ -99,6 +169,7 @@ class BikeController extends Controller
             ]);
     }
 
+    //Function to open a bikepage
     public function openABike($bike_id){
         $bike = new Bike();
         $bikeToShow = $bike->getABike($bike_id)->first();
@@ -113,6 +184,7 @@ class BikeController extends Controller
             ]);
     }
 
+    //function to show all Bikes that I'm selling
     public function showMyBikes(){
     	$bike = new Bike();
     	$owner_id = Auth::id();
@@ -123,6 +195,7 @@ class BikeController extends Controller
             ]);
     }
 
+    //Function to open the edit page of a bike
     public function openEditMyBike($bike_id){
     	$bike = new Bike();
     	$bikeMedia = new BikeMedia();
@@ -136,14 +209,15 @@ class BikeController extends Controller
     		]);
     }
     
+    //Function to edit my chosen bike
     public function editMyBike(Request $request, $bike_id){
         $bike = new Bike();
 
          $validator = Validator::make($request->all(), [
-          'brand' => 'required',
-          'model' => 'required',
+          'brand' => 'required|string',
+          'model' => 'required|string',
           'category' => 'required',
-          'sellingPrice' => 'required',
+          'sellingPrice' => 'required|numeric|min:0',
           'description' => 'required',
           'quality' => 'required'
         ]);
@@ -168,6 +242,7 @@ class BikeController extends Controller
 
     }
 
+    //function to delete one of my bikes
     public function deleteMyBike($bike_id){
         $bike = new Bike();
         $bikeMedia = new BikeMedia();
@@ -184,15 +259,20 @@ class BikeController extends Controller
         return redirect('/myBikes');
     }
 
+    //function to add an image to a bike that already exists
     public function addBikeMedia(Request $request, $bike_id){
-        $setAlsoMainImage = False;
+        
         $validator = Validator::make($request->all(), [
-            'images' => 'required',
+            'images.*' => 'required|image',
             ]);
 
         if ($validator->passes()){
             $images = $request->images;
-            $this->storeNewBikeMedia($images, $bike_id, $setAlsoMainImage);
+            $imagesAreTemporary = False;
+            $setAlsoMainImage = False;
+            $newImagesForExistingBike = True;
+
+            $this->storeNewBikeMedia($imagesAreTemporary, $images, $bike_id, $setAlsoMainImage, $newImagesForExistingBike);
             return Redirect::back()->with('succesMessage','Uw fietszoekertje werd gewijzigd.');
         }
         else{
@@ -201,6 +281,7 @@ class BikeController extends Controller
         
     }
 
+    //Function to delete an image from a bike
     public function deleteBikeMedia($bikeMedia_id){
 
         $bikeMedia = new bikeMedia();
@@ -217,6 +298,7 @@ class BikeController extends Controller
         return Redirect::back();
     }
 
+    //function to set a bike's image as main image
     public function setAsMainImage($bikeMedia_id){
         $bikeMedia = new BikeMedia();
         $bikeMediaToEdit = $bikeMedia::find($bikeMedia_id);
@@ -237,5 +319,77 @@ class BikeController extends Controller
         $bikeMediaToEdit->save();
 
         return Redirect::back();
+    }
+
+    //function to add a bike to a buyers shoppingbasket
+    public function addBikeToShoppingBasket($bike_id, Request $request){
+        $bike = new Bike();
+        $bikeToCheck = $bike->getABike($bike_id);
+
+        if($bikeToCheck->isEmpty()){
+            return Redirect::back();
+        } else{
+            if ($request->session()->exists('bike_idsInShoppingBasket')) {
+
+                $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
+                $bike_idsInShoppingBasket = array_add($bike_idsInShoppingBasket,'bike_id_'.$bike_id,$bike_id);
+                $request->session()->put('bike_idsInShoppingBasket', $bike_idsInShoppingBasket);
+
+                return Redirect::back();
+            } else{
+                $bike_idsInShoppingBasket = [
+                    'bike_id_'.$bike_id => $bike_id
+                ];
+
+                $request->session()->put('bike_idsInShoppingBasket', $bike_idsInShoppingBasket);
+                return Redirect::back();
+
+            }
+        }       
+        
+    }
+
+    //function to remove a bike from a buyers shoppingbasket
+    public function removeBikeFromShoppingBasket($bike_id, Request $request){
+
+        if ($request->session()->exists('bike_idsInShoppingBasket')) {
+            $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
+            if (array_key_exists('bike_id_'.$bike_id, $bike_idsInShoppingBasket)){
+                $bike_idsInNewShoppingBasket = array_except($bike_idsInShoppingBasket,'bike_id_'.$bike_id);
+                $request->session()->put('bike_idsInShoppingBasket', $bike_idsInNewShoppingBasket);
+                return Redirect::back();
+            }        
+        } else{
+            return Redirect::back();
+        }
+    }
+
+    //This function will get every bike from the database that are in the shoppingbasket
+    public function getBikesFromShoppingBasket($bike_idsInShoppingBasket){
+        $bike = new Bike();        
+        $bikesInShoppingBasket = array();
+
+        foreach ($bike_idsInShoppingBasket as $key => $value) {
+            $bikeToPutInArray = $bike->getABike($value)->first();
+            array_push($bikesInShoppingBasket,$bikeToPutInArray);
+        }
+
+        return $bikesInShoppingBasket;
+    }
+
+    //function to open the ShoppingBasket page
+    public function openShoppingBasket(Request $request){
+        if ($request->session()->has('bike_idsInShoppingBasket')) {
+            $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
+            $bikesFromShoppingBasket = $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
+
+            return view('pages/shoppingBasket',
+            [
+            'bikesFromShoppingBasket' => $bikesFromShoppingBasket,
+            ]);
+
+        } else{
+            return Redirect::back();
+        }
     }
 }

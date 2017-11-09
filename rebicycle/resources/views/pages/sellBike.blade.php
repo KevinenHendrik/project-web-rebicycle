@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
         <div class="flex-center position-ref full-height">
             <div class="sellBike">
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/storeNewBike" >
+                    <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/postBikeData" >
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('brand') ? ' has-error' : '' }}">
@@ -103,9 +104,9 @@
                             <label for="images" class="col-md-4 control-label">Voeg één of meerdere afbeeldingen toe*</label>
                             <div class="col-md-6">
                                 <input type="file" name="images[]" multiple="true" /><br/>
-                                @if ($errors->has('images'))
+                                @if ($errors->has('images.*'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('images') }}</strong>
+                                        <strong>Gelieve geldige afbeeldingen up te loaden</strong>
                                     </span>
                                 @endif
                             </div>

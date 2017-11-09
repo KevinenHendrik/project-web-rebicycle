@@ -29,7 +29,7 @@ class FavoriteController extends Controller
         //Check if Favorite already exists
 		$favoriteToCheck = $favorite->getFavorite($bike_id, $user_id);
         
-        if($voteToCheck->isEmpty()){
+        if($favoriteToCheck->isEmpty()){
             //add Bike to favorite
 			$favorite->bike_id = $bike_id;
 			$favorite->user_id = $user_id;

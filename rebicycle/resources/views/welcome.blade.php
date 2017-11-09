@@ -39,10 +39,10 @@
             <i class="fal fa-truck fa-4x" data-fa-transform="flip-h"></i>
             <p>De fiets wordt geleverd naar een plaats van keuze.</p>
         </div>
-        </div>
-        <div class="row link">
+        <!-- <div class="link">
             <h3>Toch nog niet helemaal mee? Ontdek hier stap voor stap hoe we te werk gaan.</h3>
-        </div>
+        </div> -->
+    </div>
     </div>
 </div> <!-- end container -->
 <div class="container-fluid">
