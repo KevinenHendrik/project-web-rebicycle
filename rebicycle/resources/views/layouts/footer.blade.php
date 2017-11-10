@@ -13,15 +13,15 @@
     <h3 class="nav-title">Over ons</h3>
     <ul class="nav">
         <li>
-            <a href="https://www.spotifyjobs.com/" id="nav-link-jobs" data-ga-category="menu" data-ga-action="jobs">Certificaat</a>
+            <a href="/certificaat" id="nav-link-jobs" data-ga-category="menu" data-ga-action="certficaat">Certificaat</a>
         </li>
 
         <li>
-            <a href="https://press.spotify.com/be-nl/" id="nav-link-press" data-ga-category="menu" data-ga-action="press">Verkoper</a>
+            <a href="/certificaat" id="nav-link-press" data-ga-category="menu" data-ga-action="verkoper">Verkoper</a>
         </li>
 
         <li>
-            <a href="https://news.spotify.com/be-nl/" id="nav-link-news" data-ga-category="menu" data-ga-action="news">Aankoper</a>
+            <a href="/certificaat" id="nav-link-news" data-ga-category="menu" data-ga-action="aankoper">Aankoper</a>
         </li>
     </ul>
 </div>
