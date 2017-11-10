@@ -91,8 +91,7 @@
         <div class="col-xs12 col-sm-3 col-md-3">
         <form method="post" action="{{ url('applyBikeFilter/') }}">
         {{ csrf_field() }}
-        <h4>Zoekterm</h4>
-        <input type="text">
+        <h2>Filteren</h2>
         <div class="quality">
             <h4>Minimum kwaliteit</h4>
             <div class="radio-button first">
