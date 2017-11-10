@@ -26,8 +26,8 @@
           width: 100%;
           overflow: hidden;
           clip-path: polygon(0% 0%, 100% 0%, 100% 50px, 0% 50px); } }
-  .bikeSale .bikeSale.homepage .bike-image img {
-    height: 300px; }
+  .bikeSale homepage .bike-image img {
+    height: auto; }
   .bikeSale h3 {
     margin: 0 !important;
     padding: 0 !important; }
@@ -63,7 +63,8 @@
       list-style-type: none; }
 
 .homepage .bikeSale img {
-  width: 100%; }
+  width: 100%;
+  height: auto; }
 
 .bicycle-single .icons {
   float: right;
@@ -424,18 +425,19 @@ h1, h2, h3, h4, h5, h6, p, a {
   background: linear-gradient(to bottom, #38ef7d, #11998e);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white; }
-  #mySidenav form {
-    margin: 1em; }
-    #mySidenav form .radio-button {
-      white-space: nowrap;
-      margin-left: 1em; }
-    #mySidenav form .radio-button.first {
-      margin-left: 0; }
-    #mySidenav form button.btn {
-      margin-top: 1em;
-      width: 100%; }
-    #mySidenav form .fa-star {
-      color: #e9e51e; }
+
+form {
+  margin: 1em; }
+  form .radio-button {
+    white-space: nowrap;
+    margin-left: 1em; }
+  form .radio-button.first {
+    margin-left: 0; }
+  form button.btn {
+    margin-top: 1em;
+    width: 100%; }
+  form .fa-star {
+    color: #e9e51e; }
 
 .quote {
   margin-top: 20vh;

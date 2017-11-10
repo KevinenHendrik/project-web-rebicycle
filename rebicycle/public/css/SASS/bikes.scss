@@ -30,8 +30,8 @@
             }
         }
     }
-    .bikeSale.homepage .bike-image img
-    {height: 300px;}
+    homepage .bike-image img{
+        height: auto;}
     h3{
         margin: 0 !important;
         padding: 0 !important;
@@ -86,6 +86,7 @@
 .homepage .bikeSale {
     img{
         width: 100%;
+        height: auto;
     }
 }
 .bicycle-single{

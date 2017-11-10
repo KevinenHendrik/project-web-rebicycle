@@ -220,22 +220,24 @@ h1,h2,h3,h4,h5,h6,p,a {
     background: linear-gradient(to bottom, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
     color: white;
-    form{
-        margin: 1em;
-        .radio-button{
-            white-space: nowrap;
-            margin-left: 1em;
-        }
-        .radio-button.first{
-            margin-left: 0;
-        }
-        button.btn{    
-            margin-top: 1em;
-            width: 100%;
-        }
-        .fa-star{
-            color: rgba($color: #e9e51e, $alpha: 1)
-        }
+    
+}
+
+form{
+    margin: 1em;
+    .radio-button{
+        white-space: nowrap;
+        margin-left: 1em;
+    }
+    .radio-button.first{
+        margin-left: 0;
+    }
+    button.btn{    
+        margin-top: 1em;
+        width: 100%;
+    }
+    .fa-star{
+        color: rgba($color: #e9e51e, $alpha: 1)
     }
 }
 .quote{
