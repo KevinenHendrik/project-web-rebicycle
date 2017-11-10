@@ -5,7 +5,6 @@
 
 .bikeSale {
   background-color: white;
-  height: 300px;
   margin-bottom: 1em; }
   @media (max-width: 768px) {
     .bikeSale {
@@ -13,8 +12,7 @@
   .bikeSale .bike-image {
     margin-top: 1em;
     width: 100%;
-    overflow: hidden;
-    height: 200px; }
+    overflow: hidden; }
     .bikeSale .bike-image img {
       margin: 16px;
       width: 100%;
@@ -161,31 +159,11 @@
   /* Width of the outside container */
   margin-left: 10%; }
 
-/* The slider itself */
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 15px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s; }
-  .slider ::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #4CAF50;
-    cursor: pointer; }
-  .slider ::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #4CAF50;
-    cursor: pointer; }
+.fa-heart {
+  color: rgba(255, 0, 0, 0.3); }
+
+.bicycles.bikes .bikeSale {
+  height: 300px; }
 
 .footer-logo {
   font-family: "Pacifico", cursive; }
@@ -324,7 +302,7 @@ h1, h2, h3, h4, h5, h6, p, a {
         font-size: 3em;
         text-align: center;
         color: white;
-        margin-top: 4em; }
+        margin-top: 2em; }
     .intro .hero-image .fa-chevron-double-down {
       color: white;
       margin: 0;
