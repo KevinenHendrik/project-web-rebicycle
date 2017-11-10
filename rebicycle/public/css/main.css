@@ -169,6 +169,9 @@
 .bicycles.bikes .bikeSale {
   height: 300px; }
 
+li {
+  list-style: none; }
+
 .footer-logo {
   font-family: "Pacifico", cursive; }
 
