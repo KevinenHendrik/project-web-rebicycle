@@ -172,7 +172,18 @@ class BikeController extends Controller
     //Function to open a bikepage
     public function openABike($bike_id){
         $bike = new Bike();
-        $bikeToShow = $bike->getABike($bike_id)->first();
+        $bikeToShow = $bike::find($bike_id);
+
+        $amountOfBikes = 2;
+
+        $randomBikes = Bike::join('bikeMedia','bikeMedia.bike_id','=','bikes.bike_id')
+        ->where('bikeMedia.isMainImage','=', True)
+        ->where('bikes.status','=', 'for sale')
+        ->select('bikes.*','bikeMedia.path as mediaPath')
+        ->inRandomOrder()
+        ->take($amountOfBikes)
+        ->get();
+       
 
         $bikeMedia = new BikeMedia();
         $bikeMediaToShow = $bikeMedia->getBikeMediaWithBikeId($bike_id);
@@ -181,6 +192,7 @@ class BikeController extends Controller
             [
             'bikeToShow' => $bikeToShow,
             'bikeMediaToShow' => $bikeMediaToShow,
+            'randomBikes' => $randomBikes,
             ]);
     }
 

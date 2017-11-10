@@ -39,7 +39,7 @@ class FavoriteController extends Controller
         return Redirect::back();
     }
 
-    public function unfavoriseBike($picture_id){
+    public function unfavoriseBike($bike_id){
 
         $favorite = new Favorite();
         $user_id = Auth::id();

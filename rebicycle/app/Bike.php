@@ -74,7 +74,7 @@ class Bike extends Model
     }
 
     public function favorites(){
-        return $this->hasMany('App\Favorite','favorite_id');
+        return $this->hasMany('App\Favorite','bike_id');
     }
 
 }

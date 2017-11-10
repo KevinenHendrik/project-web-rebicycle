@@ -48,8 +48,13 @@
         @endforeach
         
             <div class="icons">
-                <a href="/favoriseBike/{{ $bikeToShow->bike_id }}"><li>toevoegen aan favorieten <i class="fas fa-heart fa-3x"></i></li></a>
-                <a href="/addBikeToShoppingBasket/{{ $bikeToShow->bike_id }}"><li>toevoegen aan winkelwagen <i class="fal fa-shopping-cart fa-3x"></i></li></a>
+                @if($bikeToShow->favorites()->where('user_id',Auth::id())->get()->isEmpty() )
+                <a href="/favoriseBike/{{ $bikeToShow->bike_id }}"><li>Toevoegen aan favorieten <i class="fas fa-heart fa-3x"></i></li></a>
+                @else
+                <a href="/unfavoriseBike/{{ $bikeToShow->bike_id }}"><li>Verwijderen van favorieten<i class="fas fa-heart fa-3x favorited"></i></li></a>
+                @endif
+
+                <a href="/addBikeToShoppingBasket/{{ $bikeToShow->bike_id }}"><li>Toevoegen aan winkelwagen <i class="fal fa-shopping-cart fa-3x"></i></li></a>
             </div>
             <div class="description">
                 <h3>Omschrijving:</h3>
@@ -63,25 +68,29 @@
 <div class="bicycle-recommended block block-text col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
     <div class="bicycles">
     <h2 style="text-align:center;background-color:white;" >Of wat denk je van deze fietsen?</h2>
-    @for($i=0;$i<2;$i++)
+    @foreach($randomBikes as $key => $bike)
+    <a href="/bike/{{ $bike->bike_id }}">
     <div class="bikeSale col-xs-6 col-sm-6 col-md-6" id="bike">
-    <img src="{{ asset('img/bikes/bike-40-ELrF9stuur.jpg') }}">
+    <img src="{{ asset( $bike->mediaPath ) }}">
     <div class="bike-info">
         <div class="bikeSaleLeft col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-            <li><h3>trek</h3></li>
-            <li><span><i class="fal fa-euro-sign"></i> 500</span></li>
+            <li><h3>{{ $bike->brand }} {{ $bike->model }}</h3></li>
+            <li><span><i class="fal fa-euro-sign"></i> {{ $bike->sellingPrice }}</span></li>
         </div>
         <div class="bikeSaleRight col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <ul>
-                <li><i class="fas fa-heart fa-2x"></i></li>
-                <li><i class="fal fa-shopping-cart fa-2x"></i></li>
+                @if($bike->favorites()->where('user_id',Auth::id())->get()->isEmpty() )
+                    <a href="/favoriseBike/{{ $bike->bike_id }}"><li><i class="fas fa-heart fa-2x"></i></li></a>
+                @else
+                    <a href="/unfavoriseBike/{{ $bike->bike_id }}"><li><i class="fas fa-heart fa-2x favorited"></i></li></a>
+                @endif
+                <a href="/addBikeToShoppingBasket/{{ $bike->bike_id }}"><li><i class="fal fa-shopping-cart fa-2x"></i></li></a>
             </ul>
         </div>  
     </div>
 </div>
-@endfor
-    <!-- </a> -->
-<a href="/bike">
+</a>
+@endforeach
 </div>
 </div>
 

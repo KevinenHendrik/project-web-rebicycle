@@ -7,6 +7,9 @@ use DB;
 
 class Favorite extends Model
 {
+    protected $table = 'favorites';
+    protected $primaryKey = 'favorite_id';
+
 	public function getAllFavoriteBikes($user_id)
     {
         return DB::table('favorites')
