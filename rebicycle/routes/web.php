@@ -14,6 +14,8 @@
 Route::get('/', 'HomeController@index');
 Route::get('/sellBike', 'HomeController@sellBike');
 
+Route::post('/applyBikeFilter','BikeController@applyBikeFilter');
+
 Route::get('/bike/{id}', 'BikeController@openABike');
 
 Route::get('/bikes', 'BikeController@showAllBikes');

@@ -31,6 +31,19 @@ class Bike extends Model
             ->get();
     }
 
+    public function getBikesWithFilter($quality, $category, $minimumPrice, $maximumPrice){
+        return DB::table('bikes')
+            ->join('bikeMedia','bikeMedia.bike_id','=','bikes.bike_id')
+            ->where('bikeMedia.isMainImage','=', True)
+            ->where('bikes.status','=', 'for sale')
+            ->where('bikes.quality','>=',$quality)
+            ->where('bikes.category','=',$category)
+            ->where('bikes.sellingPrice','>=',$minimumPrice)
+            ->where('bikes.sellingPrice','<=',$maximumPrice)
+            ->select('bikes.*','bikeMedia.path as mediaPath')
+            ->get();
+    }
+
     public function getAllMyBikes($owner_id)
     {
     	return DB::table('bikes')

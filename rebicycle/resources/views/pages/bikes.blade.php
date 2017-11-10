@@ -3,42 +3,43 @@
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="container-fluid">
-    <form action="GET">
+    <form method="post" action="{{ url('applyBikeFilter/') }}">
+        {{ csrf_field() }}
         <h4>Zoekterm</h4>
         <input type="text">
         <div class="quality">
-            <h4>Kwaliteit</h4>
+            <h4>Minimum kwaliteit</h4>
             <div class="radio-button first">
             <label class="custom-control custom-radio">
-                <input id="star1" name="radio-quality" type="radio" class="custom-control-input">
+                <input id="star1" name="quality" type="radio" class="custom-control-input" value="1">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">@for($star1=0;$star1<1;$star1++)<i class="fas fa-star"></i>@endfor</span>
             </label>
             </div>
             <div class="radio-button">
             <label class="row">
-                <input id="star2" name="radio-quality" type="radio" class="custom-control-input">
+                <input id="star2" name="quality" type="radio" class="custom-control-input" value="2">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">@for($star2=0;$star2<2;$star2++)<i class="fas fa-star"></i>@endfor</span>
             </label>
             </div>
             <div class="radio-button">
             <label class="row">
-                <input id="star2" name="radio-quality" type="radio" class="custom-control-input">
+                <input id="star2" name="quality" type="radio" class="custom-control-input" value="3">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">@for($star3=0;$star3<3;$star3++)<i class="fas fa-star"></i>@endfor</span>
             </label>
             </div>
             <div class="radio-button">
             <label class="row">
-                <input id="star2" name="radio-quality" type="radio" class="custom-control-input">
+                <input id="star2" name="quality" type="radio" class="custom-control-input" value="4">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">@for($star4=0;$star4<4;$star4++)<i class="fas fa-star"></i>@endfor</span>
             </label>
             </div>
             <div class="radio-button">
             <label class="row">
-                <input id="star5" name="radio-quality" type="radio" class="custom-control-input">
+                <input id="star5" name="quality" type="radio" class="custom-control-input" value="5">
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">@for($star5=0;$star5<5;$star5++)<i class="fas fa-star"></i>@endfor</span>
             </label>
@@ -47,7 +48,7 @@
         <div class="type">
             <div class="form-group">
                 <h4>Type</h4>
-                <select class="form-control" id="type">
+                <select class="form-control" id="type" name="category">
                     <option></option>
                     <option>Vrouwenfiets</option>
                     <option>Herenfiets</option>
@@ -65,7 +66,7 @@
                     <span class="input-group-addon">
                         &euro;
                     </span>
-                    <input type="text" class="form-control" aria-label="minimum price" placeholder="min.">
+                    <input type="text" name="minimumPrice" class="form-control" aria-label="minimum price" placeholder="min.">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -73,12 +74,12 @@
                     <span class="input-group-addon">
                         &euro;
                     </span>
-                    <input type="text" class="form-control" aria-label="maximum price" placeholder="max.">
+                    <input type="text" name="maximumPrice" class="form-control" aria-label="maximum price" placeholder="max.">
                     </div>
                 </div>
             </div>
         </div>
-                <button type="submit" class="btn btn-primary btn-lg">Zoeken</button>
+                <button type="submit" class="btn btn-primary btn-lg">Filter toepassen</button>
     </form>
     </div>
 </div>
@@ -88,7 +89,6 @@
     </button>
     <div class="bicycles">
         @foreach($allBikes as $key => $bike)
-        <!-- @for($i=0;$i<5;$i++) -->
         <a href="/bike/{{ $bike->bike_id }}">
         <div class="bikeSale col-xs-6 col-sm-6 col-md-4" id="bike">
                 <img class="bike-image" src="{{ asset($bike->mediaPath) }}">
@@ -107,7 +107,6 @@
                 </div>
         </div>
         </a>
-        <!-- @endfor -->
         @endforeach
     </div>
 </div>

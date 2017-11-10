@@ -443,4 +443,43 @@ class BikeController extends Controller
         }
         return Redirect::back();
     }
+
+    public function applyBikeFilter(Request $request){
+        $quality = $request->quality;
+        $category = $request->category;
+        $minimumPrice = $request->minimumPrice;
+        $maximumPrice = $request->maximumPrice;
+
+        $bike = new Bike;
+        $bike = $bike->newQuery();
+
+        if($quality != null){
+            $bike->where('quality','>=',$quality);
+        }
+
+        if($category != null){
+            $bike->where('category','=',$category);
+        }
+
+
+        if($minimumPrice != null){
+            $bike->where('sellingPrice','>=',$minimumPrice);
+        }
+
+
+        if($maximumPrice != null){
+            $bike->where('sellingPrice','<=',$maximumPrice);
+        }
+
+        $bike->join('bikeMedia','bikeMedia.bike_id','=','bikes.bike_id')
+            ->where('bikeMedia.isMainImage','=', True)
+            ->where('bikes.status','=', 'for sale')
+            ->select('bikes.*','bikeMedia.path as mediaPath');
+
+        $allBikes = $bike->get();
+
+        return view('pages/bikes',
+            ['allBikes' => $allBikes,
+            ]);
+    }
 }
