@@ -194,3 +194,26 @@ h1,h2,h3,h4,h5,h6,p,a {
 .navbar-toggle.collapsed {
     background: rgba($color:#000000, $alpha: .6);
 }
+
+#mySidenav{
+    // width: 300px;
+    background-color: rgb(64, 64, 112);
+    color: white;
+    form{
+        margin: 1em;
+        .radio-button{
+            white-space: nowrap;
+            margin-left: 1em;
+        }
+        .radio-button.first{
+            margin-left: 0;
+        }
+        button.btn{    
+            margin-top: 1em;
+            width: 100%;
+        }
+        .fa-star{
+            color: rgba($color: #e9e51e, $alpha: 1)
+        }
+    }
+}
