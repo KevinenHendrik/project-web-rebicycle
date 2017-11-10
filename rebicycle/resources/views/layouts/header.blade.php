@@ -19,9 +19,8 @@
                     <ul class="nav navbar-nav"></ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/bikes">
-                    <!-- <i class="fal fa-bicycle fa-fw"></i>  -->
-                    Aanbod</a></li>
+                    <li><a href="/bikes">Aanbod</a></li>
+                    <li><a href="/sellBike">Verkopen</a></li>
                     
                     
                     <span class="fa-layers fa-fw">
@@ -51,7 +50,7 @@
                                     {{ Auth::user()->firstName }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a class="btn" href="/favoriteBikes">Favorieten</a></li>
+                                    <li><a class="btn" href="/favoriteBikes"><i class="fal fa-heart"></i>Favorieten</a></li>
                                     <li><a class="btn" href="/myOrders">Mijn bestellingen</a></li>
                                     <li><a class="btn" href="/myBikes">Mijn fietsen</a></li>
                                     @if(Auth::user()->role=='admin')

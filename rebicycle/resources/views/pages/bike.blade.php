@@ -70,27 +70,23 @@
     <h2 style="text-align:center;background-color:white;" >Of wat denk je van deze fietsen?</h2>
     @foreach($randomBikes as $key => $bike)
     <a href="/bike/{{ $bike->bike_id }}">
-    <div class="bikeSale col-xs-6 col-sm-6 col-md-6" id="bike">
-    <img src="{{ asset( $bike->mediaPath ) }}">
-    <div class="bike-info">
-        <div class="bikeSaleLeft col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-            <li><h3>{{ $bike->brand }} {{ $bike->model }}</h3></li>
-            <li><span><i class="fal fa-euro-sign"></i> {{ $bike->sellingPrice }}</span></li>
-        </div>
-        <div class="bikeSaleRight col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-            <ul>
-                @if($bike->favorites()->where('user_id',Auth::id())->get()->isEmpty() )
-                    <a href="/favoriseBike/{{ $bike->bike_id }}"><li><i class="fas fa-heart fa-2x"></i></li></a>
-                @else
-                    <a href="/unfavoriseBike/{{ $bike->bike_id }}"><li><i class="fas fa-heart fa-2x favorited"></i></li></a>
-                @endif
-                <a href="/addBikeToShoppingBasket/{{ $bike->bike_id }}"><li><i class="fal fa-shopping-cart fa-2x"></i></li></a>
-            </ul>
-        </div>  
+    <div class="bikeSale homepage col-xs-6 col-sm-6 col-md-6" id="bike">
+            <img class="bike-image" src="{{ asset($bike->mediaPath) }}">
+            <div class="bike-info">
+                <div class="bikeSaleLeft col-xs-12 col-sm-8 col-md-8">
+                    <li><h3>{{ $bike->brand }} {{ $bike->model }}</h3></li>
+                    <li><span><i class="fal fa-euro-sign"></i> {{ $bike->sellingPrice }}</span></li>
+                </div>
+                <div class="bikeSaleRight col-xs-12 col-sm-4 col-md-4">
+                    <ul>
+                    <a href="/favoriseBike/{{ $bike->bike_id }}"><li><i class="fas fa-heart fa-2x favorited"></i></li></a>
+                    <a href="/addBikeToShoppingBasket/{{ $bike->bike_id }}"><li><i class="fal fa-shopping-cart fa-2x"></i></li></a>
+                    </ul>
+                </div>  
+            </div>
     </div>
-</div>
-</a>
-@endforeach
+    </a>
+    @endforeach
 </div>
 </div>
 
