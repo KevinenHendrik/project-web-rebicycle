@@ -163,7 +163,14 @@ class BikeController extends Controller
     //Function to show all bikes
     public function showAllBikes(){
         $bike = new Bike();
-        $allBikes = $bike->getAllBikes();
+        $allBikes = $bike::join('bikeMedia','bikeMedia.bike_id','=','bikes.bike_id')
+            ->where([
+            ['bikeMedia.isMainImage','=', True],
+            ['bikes.status','=', 'for sale'],
+            ])
+            ->select('bikes.*','bikeMedia.path as mediaPath')
+            ->get();
+            
         return view('pages/bikes',
             ['allBikes' => $allBikes,
             ]);

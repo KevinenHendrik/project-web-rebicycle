@@ -180,7 +180,11 @@
                         </div>
                         <div class="bikeSaleRight col-xs-12 col-sm-4 col-md-4">
                             <ul>
+                            @if($bike->favorites()->where('user_id',Auth::id())->get()->isEmpty() )                
                             <a href="/favoriseBike/{{ $bike->bike_id }}"><li><i class="fas fa-heart fa-2x favorited"></i></li></a>
+                            @else
+                            <a href="/unfavoriseBike/{{ $bike->bike_id }}"><li><i class="fas fa-heart fa-2x favorited"></i></li></a>
+                            @endif
                             <a href="/addBikeToShoppingBasket/{{ $bike->bike_id }}"><li><i class="fal fa-shopping-cart fa-2x"></i></li></a>
                             </ul>
                         </div>  
