@@ -15,6 +15,7 @@
             <div class="right col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <a href="/bikes"><button type="button" class="btn btn-outline-primary btn-lg">Kopen</button></a>
                 </div>
+            <i class="fal fa-chevron-double-down fa-2x" onclick="scrollDown()"></i>
         </div>
     </div>
 </div>
@@ -55,7 +56,7 @@
     <div class="block block-image col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <blockquote class="blockquote text-center">
         <div class="quote">
-            <p class="mb-0">"Dankzij rebicycle was het mijn verkoop geregeld in enkele kliks!"</p>
+            <p class="mb-0">"Dankzij rebicycle was mijn verkoop geregeld in enkele klikken!"</p>
             <footer class="blockquote-footer">Eline Verdonck</footer>
         </div>
 </blockquote>
