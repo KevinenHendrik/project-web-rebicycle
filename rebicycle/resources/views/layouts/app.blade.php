@@ -19,6 +19,7 @@
     <script defer src="{{ asset('js/fontawesome.js') }}"></script>
     <script defer src="{{ asset('js/light.js') }}"></script>
     <script defer src="{{ asset('js/solid.js') }}"></script>
+    <script defer src="{{ asset('js/brands.js') }}"></script>
 
     <!-- custom scripts -->
     <script defer src="{{ asset('js/rebicycle.js') }}"></script>
