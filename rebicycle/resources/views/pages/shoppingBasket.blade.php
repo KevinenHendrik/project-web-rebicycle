@@ -50,7 +50,8 @@
                     </div>
                 </div>
                 <div class="col-md-8 col-md-offset-4">
-                    <h4>Totale kostprijs:</h4>
+                    <h4>Totale kostprijs: {{  $totalPrice }} euro
+                    </h4>
                 </div>
                 <div class="form-group ">
                         <button type="submit" class="btn btn-primary">
