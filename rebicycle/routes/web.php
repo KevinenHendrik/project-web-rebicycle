@@ -56,6 +56,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
+//Routes when user is admin
+Route::group(['middleware' => 'admin'], function () {
+	Route::get('/admin', 'OrderController@openAdminPage');
+	Route::post('/postPickUpOrder/{id}', 'OrderController@postPickUpOrder');
+	Route::post('/postPickUpOrderData/{id}', 'OrderController@postPickUpOrderData');
+	Route::post('/postDeliveryOrder/{id}', 'OrderController@postDeliveryOrder');
+	Route::get('/setOrderAsDeliverd/{id}', 'OrderController@setOrderAsDeliverd');
+});
+
 
 Auth::routes();
 

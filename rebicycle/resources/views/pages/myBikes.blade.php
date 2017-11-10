@@ -12,7 +12,7 @@
             		<a href="/bike/{{$bike->bike_id}}">
                         <h4>{{$bike->brand}}: {{$bike->model}}</h4>
                     </a>
-	            	<p>{{$bike->sellingPrice}} euro</p>
+	            	<p>Verkoopprijs: {{$bike->sellingPrice}} euro</p>
                     <p>Status: {{$bike->status}}</p>	            	
 	            	
             	</div>

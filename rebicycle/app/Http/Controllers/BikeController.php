@@ -225,14 +225,19 @@ class BikeController extends Controller
 
         if ($validator->passes()){
             $bikeToEdit = $bike::find($bike_id);
-            $bikeToEdit->brand = $request->brand;
-            $bikeToEdit->model = $request->model;
-            $bikeToEdit->category = $request->category;
-            $bikeToEdit->description = $request->description;
-            $bikeToEdit->quality = $request->quality;
-            $bikeToEdit->save();
+            if($bikeMediaToEdit->status == 'for sale'){
+                $bikeToEdit->brand = $request->brand;
+                $bikeToEdit->model = $request->model;
+                $bikeToEdit->category = $request->category;
+                $bikeToEdit->description = $request->description;
+                $bikeToEdit->quality = $request->quality;
+                $bikeToEdit->save();
 
-            return Redirect::back()->with('succesMessage','Uw fietszoekertje werd gewijzigd.');
+                return Redirect::back()->with('succesMessage','Uw fietszoekertje werd gewijzigd.');
+            } else{
+                return Redirect::back();
+            }
+            
 
         }
         else
@@ -248,14 +253,19 @@ class BikeController extends Controller
         $bike = new Bike();
         $bikeMedia = new BikeMedia();
 
-        $bikeMediaToDelete = $bikeMedia->getBikeMediaWithBikeId($bike_id);
+        $bikeToEdit = $bike::find($bike_id);
 
-        foreach ($bikeMediaToDelete as $media) {
-            $filePath = $media->path;
-            unlink($filePath);
+        if($bikeMediaToEdit->status == 'for sale'){
+
+            $bikeMediaToDelete = $bikeMedia->getBikeMediaWithBikeId($bike_id);
+
+            foreach ($bikeMediaToDelete as $media) {
+                $filePath = $media->path;
+                unlink($filePath);
+            }
+
+            $bike->deleteABike($bike_id);
         }
-
-        $bike->deleteABike($bike_id);
 
         return redirect('/myBikes');
     }
@@ -418,7 +428,7 @@ class BikeController extends Controller
                     $order->buyer_id = Auth::id();
                     $order->bike_id = $bikeFromShoppingBasket->bike_id;
                     $order->minimumQuality = $request->quality;
-                    $order->status = "Waiting for actual quality";
+                    $order->status = "Waiting for pickupdate";
                     $order->save();
 
                     $bike = new Bike;                    
