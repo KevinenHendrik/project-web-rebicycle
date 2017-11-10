@@ -164,7 +164,7 @@ class BikeController extends Controller
     public function showAllBikes(){
         $bike = new Bike();
         $allBikes = $bike->getAllBikes();
-
+        echo $allBikes;
         return view('pages/bikes',
             ['allBikes' => $allBikes,
             ]);

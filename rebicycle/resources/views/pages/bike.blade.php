@@ -15,13 +15,18 @@
             <div class="bicycle col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> 
                 @foreach ($bikeMediaToShow as $key => $imageBike)
                 @if($imageBike->isMainImage==false)
-                <div class="bicycle-picture col-xs-6 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="bicycle-picture col-xs-6 col-sm-6 col-md-6">
                     <img id="imgSmall{{$key}}" src="{{ asset($imageBike->path) }}" onclick="showImageBike(this.src,this.id)">
                 </div>
                 @endif
                 @endforeach
             </div>
-            <div class="details"><h4>Details:</h4>
+            <div class="details">
+                <div class="row first-info">
+                    <h3>Prijs</h3>
+                    <h2>&euro; {{ $bikeToShow->sellingPrice }}</h2>
+                </div>
+                <h4>Details:</h4>
                 <ul>
                     <li class="property">Merk</li>
                     <li class="property-value">Trek</li>
@@ -41,6 +46,11 @@
             <img id="headImageBike" src="{{ asset($imageBike->path) }}">
             @endif
         @endforeach
+        
+            <div class="icons">
+                <li>toevoegen aan favorieten <i class="fas fa-heart favorited fa-3x"></i></li>
+                <li>toevoegen aan winkelwagen <i class="fal fa-shopping-cart fa-3x"></i></li>
+            </div>
             <div class="description">
                 <h3>Omschrijving:</h3>
                 <p> {{ $bikeToShow->description }}</p>
@@ -49,39 +59,30 @@
     </div>
 </div>
 </div>
+<div class="container">
 <div class="bicycle-recommended block block-text col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="bicycles">
-        <h1>Misschien is dit iets voor jou?</h1>
-        <a href="/bike/24">
-        <div class="bikeSale col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                <img src="{{ asset('img/bikes/derek-thomson-271991.jpg') }}">
-                <div class="bikeSaleLeft col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                    <li><h3>Thompson adventure</h3></li>
-                    <li><span><i class="fal fa-euro-sign"></i> 360</span></li>
-                </div>
-                <div class="bikeSaleRight col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                    <ul>
-                        <li><i class="fas fa-heart fa-2x"></i></li>
-                        <li><i class="fal fa-shopping-cart fa-2x"></i></li>
-                    </ul>
-                </div>  
+    <div class="bicycles">
+    <h2 style="text-align:center;background-color:white;" >Of wat denk je van deze fietsen?</h2>
+    @for($i=0;$i<2;$i++)
+    <div class="bikeSale col-xs-6 col-sm-6 col-md-6" id="bike">
+    <img src="{{ asset('img/bikes/bike-40-ELrF9stuur.jpg') }}">
+    <div class="bike-info">
+        <div class="bikeSaleLeft col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+            <li><h3>trek</h3></li>
+            <li><span><i class="fal fa-euro-sign"></i> 500</span></li>
         </div>
-        </a>
-        <a href="/bike/24">
-        <div class="bikeSale col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                <img src="{{ asset('img/bikes/derek-thomson-271991.jpg') }}">
-                <div class="bikeSaleLeft col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                    <li><h3>Thompson adventure</h3></li>
-                    <li><span><i class="fal fa-euro-sign"></i> 360</span></li>
-                </div>
-                <div class="bikeSaleRight col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                    <ul>
-                        <li><i class="fas fa-heart fa-2x"></i></li>
-                        <li><i class="fal fa-shopping-cart fa-2x"></i></li>
-                    </ul>
-                </div>  
-        </div>
-        </a>
+        <div class="bikeSaleRight col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <ul>
+                <li><i class="fas fa-heart fa-2x favorited"></i></li>
+                <li><i class="fal fa-shopping-cart fa-2x"></i></li>
+            </ul>
+        </div>  
+    </div>
+</div>
+@endfor
+    <!-- </a> -->
+<a href="/bike">
+</div>
 </div>
 
 @endsection
