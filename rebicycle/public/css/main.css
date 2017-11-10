@@ -187,6 +187,9 @@
     background: #4CAF50;
     cursor: pointer; }
 
+.footer-logo {
+  font-family: "Pacifico", cursive; }
+
 .footer {
   background-color: #000;
   margin-top: 4em;
@@ -274,6 +277,8 @@ h1, h2, h3, h4, h5, h6, p, a {
 .navbar {
   background-color: rgba(255, 255, 255, 0.8);
   border: 0; }
+  .navbar .navbar-brand {
+    font-family: "Pacifico", cursive; }
   .navbar .navbar-inverse .navbar-collapse, .navbar .navbar-inverse .navbar-inverse .navbar-form {
     border: 0;
     font-size: 4em; }
@@ -319,7 +324,7 @@ h1, h2, h3, h4, h5, h6, p, a {
         font-size: 3em;
         text-align: center;
         color: white;
-        margin-top: 1em; }
+        margin-top: 4em; }
     .intro .hero-image .fa-chevron-double-down {
       color: white;
       margin: 0;
@@ -331,7 +336,7 @@ h1, h2, h3, h4, h5, h6, p, a {
         color: rgba(255, 255, 255, 0.9);
         animation: bounce 1s; }
     .intro .hero-image .buttons-hero-image {
-      padding-top: 50vh; }
+      padding-top: 70vh; }
       .intro .hero-image .buttons-hero-image .btn {
         background-color: transparent;
         border: 1px solid white;

@@ -10,18 +10,18 @@
     </div>
 </div>
 <div class="col-xs-6 col-sm-4 col-md-2">
-    <h3 class="nav-title">Over ons</h3>
+    <h3 class="nav-title">Praktisch</h3>
     <ul class="nav">
         <li>
-            <a href="/certificaat" id="nav-link-jobs" data-ga-category="menu" data-ga-action="certficaat">Certificaat</a>
+            <a href="/bikes" id="nav-link-jobs" data-ga-category="menu" data-ga-action="Aankoop">Aankoop</a>
         </li>
 
         <li>
-            <a href="/certificaat" id="nav-link-press" data-ga-category="menu" data-ga-action="verkoper">Verkoper</a>
+            <a href="/sellBike" id="nav-link-press" data-ga-category="menu" data-ga-action="verkoper">Verkoop</a>
         </li>
 
         <li>
-            <a href="/certificaat" id="nav-link-news" data-ga-category="menu" data-ga-action="aankoper">Aankoper</a>
+            <a href="/register" id="nav-link-news" data-ga-category="menu" data-ga-action="registreren">Registreren</a>
         </li>
     </ul>
 </div>

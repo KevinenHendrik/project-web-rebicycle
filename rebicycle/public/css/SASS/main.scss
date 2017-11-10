@@ -25,6 +25,9 @@ h1,h2,h3,h4,h5,h6,p,a {
 .navbar{
     background-color: rgba($color:#ffffff, $alpha: .8);
     border: 0;
+    .navbar-brand{
+        font-family: $font-hero;
+    }
     .navbar-inverse{
         .navbar-collapse, .navbar-inverse .navbar-form{
             border: 0;
@@ -81,7 +84,7 @@ h1,h2,h3,h4,h5,h6,p,a {
                 font-size: 3em;
                 text-align: center;
                 color: white;
-                margin-top: 1em;
+                margin-top: 4em;
             }
         }
         .fa-chevron-double-down{
@@ -98,7 +101,7 @@ h1,h2,h3,h4,h5,h6,p,a {
             }
         }
         .buttons-hero-image{
-            padding-top: 50vh;
+            padding-top: 70vh;
             .btn{
                 background-color: transparent;
                 border: 1px solid white;
