@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+</div>
 <div class="homepage">
 <div class="intro">
     <div class="hero-image">
@@ -52,7 +53,12 @@
 </div> <!-- end container -->
 <div class="container-fluid">
     <div class="block block-image col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <h1>Voor ieder wat wils!</h1>
+        <blockquote class="blockquote text-center">
+        <div class="quote">
+            <p class="mb-0">"Dankzij rebicycle was het mijn verkoop geregeld in enkele kliks!"</p>
+            <footer class="blockquote-footer">Eline Verdonck</footer>
+        </div>
+</blockquote>
     </div>
 </div>
 <div class="container">
@@ -61,7 +67,7 @@
         <h2 style="text-align:center;background-color:white;" >Misschien is dit iets voor jou?</h2>
         @foreach($bikes as $key => $bike)
         <a href="/bike/{{ $bike->bike_id }}">
-        <div class="bikeSale col-xs-6 col-sm-6 col-md-4" id="bike">
+        <div class="bikeSale homepage col-xs-6 col-sm-6 col-md-6" id="bike">
                 <img class="bike-image" src="{{ asset($bike->mediaPath) }}">
                 <div class="bike-info">
                     <div class="bikeSaleLeft col-xs-12 col-sm-8 col-md-8">

@@ -26,6 +26,8 @@
           width: 100%;
           overflow: hidden;
           clip-path: polygon(0% 0%, 100% 0%, 100% 50px, 0% 50px); } }
+  .bikeSale .bikeSale.homepage .bike-image img {
+    height: 300px; }
   .bikeSale h3 {
     margin: 0 !important;
     padding: 0 !important; }
@@ -415,7 +417,12 @@ h1, h2, h3, h4, h5, h6, p, a {
   background: rgba(0, 0, 0, 0.6); }
 
 #mySidenav {
-  background-color: #404070;
+  background: #11998e;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #38ef7d, #11998e);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #38ef7d, #11998e);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white; }
   #mySidenav form {
     margin: 1em; }
@@ -429,5 +436,12 @@ h1, h2, h3, h4, h5, h6, p, a {
       width: 100%; }
     #mySidenav form .fa-star {
       color: #e9e51e; }
+
+.quote {
+  margin-top: 20vh;
+  color: white;
+  font-size: 2em; }
+  .quote footer {
+    color: white; }
 
 /*# sourceMappingURL=main.css.map */

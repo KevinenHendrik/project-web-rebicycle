@@ -215,7 +215,10 @@ h1,h2,h3,h4,h5,h6,p,a {
 
 #mySidenav{
     // width: 300px;
-    background-color: rgb(64, 64, 112);
+    background: #11998e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
     color: white;
     form{
         margin: 1em;
@@ -233,5 +236,13 @@ h1,h2,h3,h4,h5,h6,p,a {
         .fa-star{
             color: rgba($color: #e9e51e, $alpha: 1)
         }
+    }
+}
+.quote{
+    margin-top: 20vh;
+    color: white;
+    font-size: 2em;
+    footer{
+        color: white;
     }
 }

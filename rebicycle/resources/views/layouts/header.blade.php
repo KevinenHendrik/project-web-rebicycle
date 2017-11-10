@@ -21,12 +21,11 @@
                     <ul class="nav navbar-nav navbar-right">
                     <li><a href="/bikes">
                     <!-- <i class="fal fa-bicycle fa-fw"></i>  -->
-                    aanbod</a></li>
+                    Aanbod</a></li>
                     
                     
                     <span class="fa-layers fa-fw">
-                    <i class="fal fa-shopping-cart fa-2x"></i>
-                    <span class="fa-layers-counter fa-4x" id="shopping-cart-number">1</span>
+                    <a href="/openShoppingBasket"><i class="fal fa-shopping-cart fa-2x"></i></a>
                     </span>
                         @guest
                         <li class="dropdown">
