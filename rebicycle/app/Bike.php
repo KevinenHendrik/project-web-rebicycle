@@ -9,6 +9,17 @@ class Bike extends Model
 {
     protected $primaryKey = 'bike_id';
 
+    public function getNumberOfBikesInRandomOrder($amountOfBikes){
+         return DB::table('bikes')
+            ->join('bikeMedia','bikeMedia.bike_id','=','bikes.bike_id')
+            ->where('bikeMedia.isMainImage','=', True)
+            ->where('bikes.status','=', 'for sale')
+            ->select('bikes.*','bikeMedia.path as mediaPath')
+            ->inRandomOrder()
+            ->take($amountOfBikes)
+            ->get();
+    }
+
     public function getAllBikes(){
         return DB::table('bikes')
             ->join('bikeMedia','bikeMedia.bike_id','=','bikes.bike_id')
