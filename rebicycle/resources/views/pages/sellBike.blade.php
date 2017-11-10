@@ -42,8 +42,10 @@
                             <div class="col-md-6">
                                 <select id="category"  class="form-control" name="category" value="{{ old('category') }}" required>
                                   <option value="Herenfiets">Herenfiets</option>
-                                  <option value="Damesfietsen">Damesfietsen</option>
-                                  <option value="racefietsen">racefietsen</option>
+                                  <option value="Damesfietsen">Damesfiets</option>
+                                  <option value="racefietsen">Wielerfiets</option>
+                                  <option value="racefietsen">Mountainbike</option>
+                                  <option value="racefietsen">Andere</option>
                                 </select>
 
                                 @if ($errors->has('category'))
@@ -86,42 +88,13 @@
                             <label for="quality" class="col-md-4 control-label">Kwaliteitsscore*</label>
 
                             <div class="col-md-6">
-                                <div class="radio-button first">
-                                <label class="custom-control custom-radio">
-                                    <input id="star1" name="quality" type="radio" class="custom-control-input" value="1">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">@for($star1=0;$star1<1;$star1++)<i class="fas fa-star"></i>@endfor</span>
-                                </label>
-                                </div>
-                                <div class="radio-button">
-                                <label class="row">
-                                    <input id="star2" name="quality" type="radio" class="custom-control-input" value="2">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">@for($star2=0;$star2<2;$star2++)<i class="fas fa-star"></i>@endfor</span>
-                                </label>
-                                </div>
-                                <div class="radio-button">
-                                <label class="row">
-                                    <input id="star2" name="quality" type="radio" class="custom-control-input" value="3">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">@for($star3=0;$star3<3;$star3++)<i class="fas fa-star"></i>@endfor</span>
-                                </label>
-                                </div>
-                                <div class="radio-button">
-                                <label class="row">
-                                    <input id="star2" name="quality" type="radio" class="custom-control-input" value="4">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">@for($star4=0;$star4<4;$star4++)<i class="fas fa-star"></i>@endfor</span>
-                                </label>
-                                </div>
-                                <div class="radio-button">
-                                <label class="row">
-                                    <input id="star5" name="quality" type="radio" class="custom-control-input" value="5">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">@for($star5=0;$star5<5;$star5++)<i class="fas fa-star"></i>@endfor</span>
-                                </label>
-                                </div>
-                            </div>
+                                <select id="quality"  class="form-control" name="quality" value="{{ old('quality') }}" required>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select>
 
                                 @if ($errors->has('quality'))
                                     <span class="help-block">

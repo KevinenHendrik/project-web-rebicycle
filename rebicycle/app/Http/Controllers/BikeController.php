@@ -170,7 +170,7 @@ class BikeController extends Controller
             ])
             ->select('bikes.*','bikeMedia.path as mediaPath')
             ->get();
-            
+
         return view('pages/bikes',
             ['allBikes' => $allBikes,
             ]);
@@ -245,12 +245,13 @@ class BikeController extends Controller
 
         if ($validator->passes()){
             $bikeToEdit = $bike::find($bike_id);
-            if($bikeMediaToEdit->status == 'for sale'){
+            if($bikeToEdit->status == 'for sale'){
                 $bikeToEdit->brand = $request->brand;
                 $bikeToEdit->model = $request->model;
                 $bikeToEdit->category = $request->category;
                 $bikeToEdit->description = $request->description;
                 $bikeToEdit->quality = $request->quality;
+                $bikeToEdit->sellingPrice = $request->sellingPrice;
                 $bikeToEdit->save();
 
                 return Redirect::back()->with('succesMessage','Uw fietszoekertje werd gewijzigd.');
