@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use \App\Bike;
 use App\BikeMedia;
 use App\Favorite;
-use App\Demand;
+use App\Order;
 use Carbon\Carbon;
 use Validator;
 use Auth;
@@ -190,9 +190,11 @@ class BikeController extends Controller
     	$bike = new Bike();
     	$owner_id = Auth::id();
     	$myBikes = $bike->getAllMyBikes($owner_id);
+        $percentageForCompany = 5;
 
     	return view('pages/myBikes',
             ['myBikes' => $myBikes,
+            'percentageForCompany' => $percentageForCompany,
             ]);
     }
 
@@ -225,14 +227,19 @@ class BikeController extends Controller
 
         if ($validator->passes()){
             $bikeToEdit = $bike::find($bike_id);
-            $bikeToEdit->brand = $request->brand;
-            $bikeToEdit->model = $request->model;
-            $bikeToEdit->category = $request->category;
-            $bikeToEdit->description = $request->description;
-            $bikeToEdit->quality = $request->quality;
-            $bikeToEdit->save();
+            if($bikeMediaToEdit->status == 'for sale'){
+                $bikeToEdit->brand = $request->brand;
+                $bikeToEdit->model = $request->model;
+                $bikeToEdit->category = $request->category;
+                $bikeToEdit->description = $request->description;
+                $bikeToEdit->quality = $request->quality;
+                $bikeToEdit->save();
 
-            return Redirect::back()->with('succesMessage','Uw fietszoekertje werd gewijzigd.');
+                return Redirect::back()->with('succesMessage','Uw fietszoekertje werd gewijzigd.');
+            } else{
+                return Redirect::back();
+            }
+            
 
         }
         else
@@ -248,14 +255,19 @@ class BikeController extends Controller
         $bike = new Bike();
         $bikeMedia = new BikeMedia();
 
-        $bikeMediaToDelete = $bikeMedia->getBikeMediaWithBikeId($bike_id);
+        $bikeToEdit = $bike::find($bike_id);
 
-        foreach ($bikeMediaToDelete as $media) {
-            $filePath = $media->path;
-            unlink($filePath);
+        if($bikeMediaToEdit->status == 'for sale'){
+
+            $bikeMediaToDelete = $bikeMedia->getBikeMediaWithBikeId($bike_id);
+
+            foreach ($bikeMediaToDelete as $media) {
+                $filePath = $media->path;
+                unlink($filePath);
+            }
+
+            $bike->deleteABike($bike_id);
         }
-
-        $bike->deleteABike($bike_id);
 
         return redirect('/myBikes');
     }
@@ -327,9 +339,7 @@ class BikeController extends Controller
         $bike = new Bike();
         $bikeToCheck = $bike->getABike($bike_id);
 
-        if($bikeToCheck->isEmpty()){
-            return Redirect::back();
-        } else{
+        if(!$bikeToCheck->isEmpty() && $bikeToCheck->first()->status == 'for sale'){
             if ($request->session()->exists('bike_idsInShoppingBasket')) {
 
                 $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
@@ -346,6 +356,9 @@ class BikeController extends Controller
                 return Redirect::back();
 
             }
+        } else{
+            return Redirect::back();
+
         }       
         
     }
@@ -384,9 +397,15 @@ class BikeController extends Controller
             $bike_idsInShoppingBasket = $request->session()->get('bike_idsInShoppingBasket');
             $bikesFromShoppingBasket = $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
 
+            $totalPrice = 0;
+            foreach ($bikesFromShoppingBasket as $key => $bike) {
+                $totalPrice = $totalPrice + $bike->sellingPrice;
+            }
+
             return view('pages/shoppingBasket',
             [
             'bikesFromShoppingBasket' => $bikesFromShoppingBasket,
+            'totalPrice' => $totalPrice,
             ]);
 
         } else{
@@ -407,12 +426,12 @@ class BikeController extends Controller
                 $bikesFromShoppingBasket = $this->getBikesFromShoppingBasket($bike_idsInShoppingBasket);
 
                 foreach ($bikesFromShoppingBasket as $key => $bikeFromShoppingBasket) {
-                    $demand = new Demand;
-                    $demand->buyer_id = Auth::id();
-                    $demand->bike_id = $bikeFromShoppingBasket->bike_id;
-                    $demand->minimumQuality = $request->quality;
-                    $demand->status = "Waiting for actual quality";
-                    $demand->save();
+                    $order = new Order;
+                    $order->buyer_id = Auth::id();
+                    $order->bike_id = $bikeFromShoppingBasket->bike_id;
+                    $order->minimumQuality = $request->quality;
+                    $order->status = "Waiting for pickupdate";
+                    $order->save();
 
                     $bike = new Bike;                    
                     $bikeToEdit = $bike::find($bikeFromShoppingBasket->bike_id);

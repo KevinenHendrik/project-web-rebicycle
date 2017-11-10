@@ -48,6 +48,21 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/openShoppingBasket','BikeController@openShoppingBasket');
 	Route::post('/buy','BikeController@buyBikes');
 
+	Route::get('/myOrders', 'OrderController@openMyOrders');
+
+	Route::get('/openEditUser/','UserController@openEditUser');
+	Route::post('/editUser/','UserController@editUser');
+	Route::post('/editPasswordUser/','UserController@editPasswordUser');
+
+});
+
+//Routes when user is admin
+Route::group(['middleware' => 'admin'], function () {
+	Route::get('/admin', 'OrderController@openAdminPage');
+	Route::post('/postPickUpOrder/{id}', 'OrderController@postPickUpOrder');
+	Route::post('/postPickUpOrderData/{id}', 'OrderController@postPickUpOrderData');
+	Route::post('/postDeliveryOrder/{id}', 'OrderController@postDeliveryOrder');
+	Route::get('/setOrderAsDeliverd/{id}', 'OrderController@setOrderAsDeliverd');
 });
 
 
