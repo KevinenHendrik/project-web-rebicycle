@@ -190,6 +190,9 @@
   padding-top: 4em;
   padding-bottom: 2em;
   font-size: 1.2em; }
+  .footer .contact {
+    font-size: 1em;
+    color: white; }
 
 .footer a {
   color: white; }
@@ -360,7 +363,7 @@ h1, h2, h3, h4, h5, h6, p, a {
   transition: all 1s; }
 
 .fixed-me {
-  background-color: rgba(255, 255, 255, 0.4) !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
   padding: 0px  !important;
   margin-bottom: 5px;
   position: fixed;
