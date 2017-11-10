@@ -50,7 +50,7 @@
                                     {{ Auth::user()->firstName }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a class="btn" href="/favoriteBikes"><i class="fal fa-heart"></i>Favorieten</a></li>
+                                    <li><a class="btn" href="/favoriteBikes"><i class="fal fa-heart"></i> Favorieten</a></li>
                                     <li><a class="btn" href="/myOrders">Mijn bestellingen</a></li>
                                     <li><a class="btn" href="/myBikes">Mijn fietsen</a></li>
                                     @if(Auth::user()->role=='admin')
