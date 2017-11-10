@@ -1,3 +1,7 @@
+.fa-heart.favorited{
+    color: red;
+}
+
 .bikeSale{
     background-color: white;
     height: 300px;
@@ -84,6 +88,15 @@
     }
 }
 .bicycle-single{
+    .icons{
+        float: right;
+        text-align: right;
+
+        li{
+            list-style: none;
+            margin-top: .5em;
+        }
+    }
     img{
         width: 100%;
     }
@@ -100,7 +113,15 @@
         .details{    
             margin-left: 0;
             padding-left: 0;
-         
+            .first-info{
+                margin-left: 1em;
+                h3{
+                    margin-bottom: 0;
+                }
+                h2{
+                    margin-top: 0em;
+                }
+            }
             .property{
                 font-size: 1em;
             }
@@ -121,6 +142,7 @@
             }
         }
     }
+    
 }
 
 .bicycle-recommended{

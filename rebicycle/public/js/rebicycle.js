@@ -18,21 +18,13 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 } 
 
-// rangeslider
-var slider = document.getElementById("priceRange");
-var output = document.getElementById("price");
-output.innerHTML = slider.value; // Display the default slider value
-
-var slider = document.getElementById("qualityRange");
-var output = document.getElementById("quality");
-output.innerHTML = slider.value; // Display the default slider value
-
-
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-    output.innerHTML = this.value;
-} 
-
 function scrollDown(){
     window.scrollTo(0,window.innerHeight-50);
+}
+
+function showImageBike($newImgPath,$oldImgId){
+    var $oldImgPath = document.getElementById("headImageBike").src;
+    this.src = $oldImgPath;
+    document.getElementById("headImageBike").src = $newImgPath;
+    document.getElementById($oldImgId).src=$oldImgPath;
 }
