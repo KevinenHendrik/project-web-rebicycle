@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div id="mySidenav" class="sidenav">
+<!-- <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="container-fluid">
     <form method="post" action="{{ url('applyBikeFilter/') }}">
@@ -82,11 +82,11 @@
                 <button type="submit" class="btn btn-primary btn-lg">Filter toepassen</button>
     </form>
     </div>
-</div>
-<div class="container">
+</div> -->
+<!-- <div class="container">
     <button style="z-index:100;" onclick="openNav()" type="button" class="filter-button btn btn-primary">
         <i class="fa fa-filter fa-fw" aria-hidden="true"></i>&nbsp; Filter
-    </button>
+    </button> -->
     <div class="row col-xs-12 col-sm-12 col-md-12">
         <div class="col-xs12 col-sm-3 col-md-3">
         <form method="post" action="{{ url('applyBikeFilter/') }}">
@@ -167,8 +167,8 @@
         </div>
                 <button type="submit" class="btn btn-primary btn-lg">Filter toepassen</button>
     </form>
-</div>
-        </div>
+    </div>
+    <div class="col-xs12 col-sm-9 col-md-9">
         <div class="bicycles">
             @foreach($allBikes as $key => $bike)
             <a href="/bike/{{ $bike->bike_id }}">
@@ -190,6 +190,7 @@
             </a>
             @endforeach
         </div>
+</div>
     </div>
 </div>
 @endsection
