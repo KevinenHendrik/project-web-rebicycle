@@ -218,6 +218,12 @@
 
 .fa-heart{
     color:rgba(255,0,0,.3);
+    &:hover{
+        color:red;
+    } 
+     > .favorited{
+        color: red;
+    }  
 }
 
 .bicycles.bikes .bikeSale{
