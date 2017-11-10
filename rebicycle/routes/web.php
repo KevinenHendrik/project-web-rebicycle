@@ -11,15 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/sellBike', 'HomeController@sellBike');
 
 Route::get('/bike/{id}', 'BikeController@openABike');
-
-Route::get('/sellBike', function () {
-    return view('pages/sellBike');
-});
 
 Route::get('/bikes', 'BikeController@showAllBikes');
 Route::post('/postBikeData','BikeController@postBikeData');

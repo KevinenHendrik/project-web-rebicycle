@@ -55,13 +55,13 @@
     <div class="bicycle-recommended block block-text col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class="bicycles">
         <h2 style="text-align:center;background-color:white;" >Misschien is dit iets voor jou?</h2>
-        @for($i=0;$i<2;$i++)
+        @foreach($bikes as $key => $bike)
         <div class="bikeSale col-xs-6 col-sm-6 col-md-6" id="bike">
-        <img src="{{ asset('img/bikes/bike-62-TsOnX.jpg') }}">
+        <img src="{{ asset( $bike->mediaPath ) }}">
         <div class="bike-info">
             <div class="bikeSaleLeft col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                <li><h3>trek</h3></li>
-                <li><span><i class="fal fa-euro-sign"></i> 500</span></li>
+                <li><h3>{{ $bike->brand }}</h3></li>
+                <li><span><i class="fal fa-euro-sign"></i> {{ $bike->sellingPrice }}</span></li>
             </div>
             <div class="bikeSaleRight col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <ul>
@@ -70,8 +70,8 @@
                 </ul>
             </div>  
         </div>
-</div>
-@endfor
+    </div>
+    @endforeach
         <!-- </a> -->
     <a href="/bike">
 </div>
