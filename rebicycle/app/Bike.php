@@ -24,11 +24,12 @@ class Bike extends Model
     {
     	return DB::table('bikes')
     	->join('bikeMedia','bikeMedia.bike_id','=','bikes.bike_id')
+        ->leftJoin('repairs', 'repairs.bike_id', '=', 'bikes.bike_id')
     	->where([
     		['bikes.owner_id', '=', $owner_id],
     		['bikeMedia.isMainImage','=', True],
     		])
-        ->select('bikes.*','bikeMedia.path as mediaPath')
+        ->select('bikes.*','bikeMedia.path as mediaPath','repairs.costs as costs')
         ->get();
     }
 

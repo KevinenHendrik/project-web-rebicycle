@@ -8,11 +8,16 @@
             	<a href="/bike/{{$bike->bike_id}}">
                     <div class="col-md-2"><img style="width: 100%" src="{{ asset($bike->mediaPath)  }}"></div>
                 </a>
-            	<div class="col-md-3">
+            	<div class="col-md-4">
             		<a href="/bike/{{$bike->bike_id}}">
                         <h4>{{$bike->brand}}: {{$bike->model}}</h4>
                     </a>
-	            	<p>Verkoopprijs: {{$bike->sellingPrice}} euro</p>
+	            	<p>Verkoopprijs: {{$bike->sellingPrice}} euro</p> 
+                    <p>Percentage voor Rebicycle: {{ $percentageForCompany }}%</p>
+                    @if( $bike->costs != null)
+                        <p>Kosten: {{ $bike->costs }} euro</p>
+                    @endif
+                    <p>Opbrengst: {{$bike->sellingPrice - $bike->sellingPrice/100*$percentageForCompany - $bike->costs}} euro</p>
                     <p>Status: {{$bike->status}}</p>	            	
 	            	
             	</div>

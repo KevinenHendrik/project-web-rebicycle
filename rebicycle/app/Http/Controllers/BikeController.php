@@ -190,9 +190,11 @@ class BikeController extends Controller
     	$bike = new Bike();
     	$owner_id = Auth::id();
     	$myBikes = $bike->getAllMyBikes($owner_id);
+        $percentageForCompany = 5;
 
     	return view('pages/myBikes',
             ['myBikes' => $myBikes,
+            'percentageForCompany' => $percentageForCompany,
             ]);
     }
 
