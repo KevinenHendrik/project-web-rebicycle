@@ -3,10 +3,19 @@
 .bikeSale {
   background-color: white;
   height: 100%; }
-  .bikeSale img {
-    margin-top: 16px;
-    width: 100%;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 250px, 0% 250px); }
+  .bikeSale .bike-image {
+    max-height: 220px;
+    margin-top: 1em;
+    width: 100%; }
+    .bikeSale .bike-image img {
+      margin: 16px;
+      width: 100%;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 200px, 0% 200px); }
+    @media (max-width: 768px) {
+      .bikeSale .bike-image {
+        width: 100%; }
+        .bikeSale .bike-image img {
+          clip-path: polygon(0% 0%, 100% 0%, 100% 50px, 0% 50px); } }
   .bikeSale h3 {
     margin: 0 !important;
     padding: 0 !important; }
@@ -20,10 +29,12 @@
       margin-top: 5px; }
       @media (max-width: 768px) {
         .bikeSale .bike-info .bikeSaleRight {
-          margin-top: -60px; } }
+          margin-top: -50px; } }
       .bikeSale .bike-info .bikeSaleRight .fa-heart {
         color: rgba(255, 0, 0, 0.3); }
         .bikeSale .bike-info .bikeSaleRight .fa-heart:hover {
+          color: red; }
+        .bikeSale .bike-info .bikeSaleRight .fa-heart > .favorited {
           color: red; }
       .bikeSale .bike-info .bikeSaleRight li:first-child {
         margin-bottom: 10px; }
@@ -31,6 +42,9 @@
       margin-left: 0;
       padding-left: 0;
       margin-top: 5px; }
+      @media (max-width: 768px) {
+        .bikeSale .bike-info .bikeSaleLeft h3 {
+          font-size: 1em; } }
       .bikeSale .bike-info .bikeSaleLeft li:first-child {
         margin-bottom: 10px; }
     .bikeSale .bike-info li {

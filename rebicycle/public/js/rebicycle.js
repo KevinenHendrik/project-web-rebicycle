@@ -7,7 +7,6 @@ $(window).scroll(function() {
     }
 });
 
-
 // filter balk aan zijkant
 /* Set the width of the side navigation to 250px */
 function openNav() {

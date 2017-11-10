@@ -27,7 +27,7 @@
                     
                     <span class="fa-layers fa-fw">
                     <i class="fal fa-shopping-cart fa-2x"></i>
-                    <span class="fa-layers-counter fa-4x ">1</span>
+                    <span class="fa-layers-counter fa-4x" id="shopping-cart-number">1</span>
                     </span>
 
                         <!-- Authentication Links -->
