@@ -84,7 +84,7 @@
     </div>
 </div>
 <div class="container">
-    <button style="z-index:10000;" onclick="openNav()" type="button" class="filter-button btn btn-primary">
+    <button style="z-index:100;" onclick="openNav()" type="button" class="filter-button btn btn-primary">
         <i class="fa fa-filter fa-fw" aria-hidden="true"></i>&nbsp; Filter
     </button>
     <div class="bicycles">
@@ -92,7 +92,6 @@
         <a href="/bike/{{ $bike->bike_id }}">
         <div class="bikeSale col-xs-6 col-sm-6 col-md-4" id="bike">
                 <img class="bike-image" src="{{ asset($bike->mediaPath) }}">
-                <!-- <img src="{{ asset('img/bikes/bike-62-TsOnX.jpg') }}"> -->
                 <div class="bike-info">
                     <div class="bikeSaleLeft col-xs-12 col-sm-8 col-md-8">
                         <li><h3>{{ $bike->brand }} {{ $bike->model }}</h3></li>
@@ -100,8 +99,8 @@
                     </div>
                     <div class="bikeSaleRight col-xs-12 col-sm-4 col-md-4">
                         <ul>
-                            <li><i class="fas fa-heart fa-2x favorited"></i></li>
-                            <li><i class="fal fa-shopping-cart fa-2x"></i></li>
+                        <a href="/favoriseBike/{{ $bike->bike_id }}"><li><i class="fas fa-heart fa-2x favorited"></i></li></a>
+                        <a href="/addBikeToShoppingBasket/{{ $bike->bike_id }}"><li><i class="fal fa-shopping-cart fa-2x"></i></li></a>
                         </ul>
                     </div>  
                 </div>

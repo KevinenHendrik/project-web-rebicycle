@@ -48,8 +48,8 @@
         @endforeach
         
             <div class="icons">
-                <li>toevoegen aan favorieten <i class="fas fa-heart favorited fa-3x"></i></li>
-                <li>toevoegen aan winkelwagen <i class="fal fa-shopping-cart fa-3x"></i></li>
+                <a href="/favoriseBike/{{ $bikeToShow->bike_id }}"><li>toevoegen aan favorieten <i class="fas fa-heart fa-3x"></i></li></a>
+                <a href="/addBikeToShoppingBasket/{{ $bikeToShow->bike_id }}"><li>toevoegen aan winkelwagen <i class="fal fa-shopping-cart fa-3x"></i></li></a>
             </div>
             <div class="description">
                 <h3>Omschrijving:</h3>
@@ -73,7 +73,7 @@
         </div>
         <div class="bikeSaleRight col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <ul>
-                <li><i class="fas fa-heart fa-2x favorited"></i></li>
+                <li><i class="fas fa-heart fa-2x"></i></li>
                 <li><i class="fal fa-shopping-cart fa-2x"></i></li>
             </ul>
         </div>  

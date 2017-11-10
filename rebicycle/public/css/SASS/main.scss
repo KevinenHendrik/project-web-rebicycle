@@ -62,7 +62,7 @@ h1,h2,h3,h4,h5,h6,p,a {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 100vh;
+        height: 60vh;
         padding-top: 0;
         .title{
             position: absolute;
@@ -75,6 +75,13 @@ h1,h2,h3,h4,h5,h6,p,a {
                 text-align: center;
                 color: white;
                 // position: fixed;
+            }
+            h2{
+                font-family: $font-hero;
+                font-size: 3em;
+                text-align: center;
+                color: white;
+                margin-top: 1em;
             }
         }
         .fa-chevron-double-down{
@@ -113,6 +120,14 @@ h1,h2,h3,h4,h5,h6,p,a {
             }
         }
 
+    }
+}
+
+.steps{
+    .subtitel{
+        margin: 1em;
+        
+        font-size: 4em;
     }
 }
 

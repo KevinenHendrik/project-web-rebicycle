@@ -299,7 +299,7 @@ h1, h2, h3, h4, h5, h6, p, a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 60vh;
     padding-top: 0; }
     .intro .hero-image .title {
       position: absolute;
@@ -311,6 +311,12 @@ h1, h2, h3, h4, h5, h6, p, a {
         font-size: 7em;
         text-align: center;
         color: white; }
+      .intro .hero-image .title h2 {
+        font-family: "Pacifico", cursive;
+        font-size: 3em;
+        text-align: center;
+        color: white;
+        margin-top: 1em; }
     .intro .hero-image .fa-chevron-double-down {
       color: white;
       margin: 0;
@@ -334,6 +340,10 @@ h1, h2, h3, h4, h5, h6, p, a {
         float: right; }
       .intro .hero-image .buttons-hero-image .right .btn {
         float: left; }
+
+.steps .subtitel {
+  margin: 1em;
+  font-size: 4em; }
 
 .bicycles h2 {
   margin-top: 2em;
