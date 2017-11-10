@@ -14,10 +14,13 @@ h1,h2,h3,h4,h5,h6,p,a {
     font-family: $font-main;
 }
 
-.content:not( .intro ){
+#app{
     margin-top: 50px;
 }
 
+.homepage .intro .hero-image{
+    margin-top: -50px;
+}
 
 .navbar{
     background-color: rgba($color:#ffffff, $alpha: .8);

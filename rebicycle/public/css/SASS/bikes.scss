@@ -1,19 +1,27 @@
 .bikeSale{
     background-color: white;
-    height: 100%;
-    .bike-image {
-        max-height: 220px;
+    height: 300px;
+    margin-bottom: 1em;
+    @media (max-width: 768px) {
+        height: 100%;
+    }
+        .bike-image {
         margin-top: 1em;
         width: 100%;
+        overflow: hidden;
+        height: 200px;
         img{
         margin: 16px;
         width: 100%;
         clip-path: polygon(0% 0%, 100% 0%, 100% 200px, 0% 200px);
         }
-                @media (max-width: 768px) {
-                    
-        width: 100%;
+        @media (max-width: 768px) {
+            height:auto;
+            // width: 100%;
+            // max-height: 200px;
             img{
+                width: 100%;
+                overflow:hidden;
             clip-path: polygon(0% 0%, 100% 0%, 100% 50px, 0% 50px);
             }
         }
@@ -70,6 +78,11 @@
     }
 }
 
+.homepage .bikeSale {
+    img{
+        width: 100%;
+    }
+}
 .bicycle-single{
     img{
         width: 100%;

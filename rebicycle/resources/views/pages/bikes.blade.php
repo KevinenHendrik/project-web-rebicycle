@@ -87,18 +87,18 @@
         <i class="fa fa-filter fa-fw" aria-hidden="true"></i>&nbsp; Filter
     </button>
     <div class="bicycles">
-        <!-- @foreach($allBikes as $key => $bike) -->
+        @foreach($allBikes as $key => $bike)
         <!-- @for($i=0;$i<5;$i++) -->
         <a href="/bike/{{ $bike->bike_id }}">
-        <div class="bikeSale col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-3" id="bike">
+        <div class="bikeSale col-xs-6 col-sm-6 col-md-4" id="bike">
                 <img class="bike-image" src="{{ asset($bike->mediaPath) }}">
                 <!-- <img src="{{ asset('img/bikes/bike-62-TsOnX.jpg') }}"> -->
                 <div class="bike-info">
-                    <div class="bikeSaleLeft col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                    <div class="bikeSaleLeft col-xs-12 col-sm-8 col-md-8">
                         <li><h3>{{ $bike->brand }} {{ $bike->model }}</h3></li>
                         <li><span><i class="fal fa-euro-sign"></i> {{ $bike->sellingPrice }}</span></li>
                     </div>
-                    <div class="bikeSaleRight col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="bikeSaleRight col-xs-12 col-sm-4 col-md-4">
                         <ul>
                             <li><i class="fas fa-heart fa-2x favorited"></i></li>
                             <li><i class="fal fa-shopping-cart fa-2x"></i></li>
@@ -108,7 +108,7 @@
         </div>
         </a>
         <!-- @endfor -->
-        <!-- @endforeach -->
+        @endforeach
     </div>
 </div>
 @endsection
